@@ -565,7 +565,7 @@ hr{
 	z-index: 1;
 	/* font-size:20px; */
 	font-family: 'Avenir Next LT Pro';
-	font-size: 22px;
+	font-size: 18px;
 	font-weight: normal;
 	font-style: normal;
 	color:#5985AF;
@@ -683,7 +683,7 @@ font-size:30px;
 	font-family: 'Avenir Next LT Pro';
 	font-weight: normal;
 	font-style: normal;
-	font-size:22px;
+	font-size:20px;
 }
 .chevronicon{
 	font-size:16px ! important;
