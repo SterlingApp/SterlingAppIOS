@@ -32,13 +32,13 @@
 				<div class="ItemlineValueText cardContent">{{total_contribution.CURRENT_YR_CONTRB| currency}}</div>
 			</div>
 			<div class="item item-avatar itemleft item-text-wrap">
-				<img src="img/item/Allowable-contributions.png">
+				<img src="img/item/Allowable-contributions.png" class="item-Image">
 				<div class="ItemlineHead cardContent">Allowable contributions remaining for 2016</div>
 				<div class="ItemlineValueText cardContent">{{total_contribution.CONTRB_LIMIT  | currency}}</div>
 			</div>
 			
 			<div class="item item-avatar itemleft item-text-wrap">
-				<img src="img/item/Total-disburesment.png">
+				<img src="img/item/Total-disburesment.png" style="margin-top:10px;">
 				<div class="ItemlineHead cardContent">Total disbursement for 2016</div>
 				<div class="ItemlineValueText cardContent">{{total_contribution.TOTAL_DISB_AMOUNT | currency}}</div>
 			</div>
@@ -96,7 +96,7 @@
 							Enter FeeAmount
 							 </span>
 							
-							<input type="number"   name="feeamount" ng-model="makecontribute.feeamount" ng-pattern='\\d+' id="forminput" placeholder="Optional Monthly Service Fee Amount($)" required>
+							<input type="number"   name="feeamount" ng-model="makecontribute.feeamount" ng-pattern='\\d+' id="forminput" placeholder="Optional Fee Amount($)" required>
 							</label> 
 							<div class="row">
 							<p style="color:Red" ng-show=" myForm.feeamount.$error.number">Please Enter Number's Only.</p>
