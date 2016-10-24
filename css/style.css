@@ -783,11 +783,20 @@ ion-item.item:hover a {
 		}
 
 .item-Image{
-	margin-top:07px;
-}
-.item-avatar{
 	margin-top:12px;
 }
+.item-avatar i:first-child, .item-avatar .item-img {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 36px;
+    max-width: 40px;
+    max-height: 40px;
+    width: 100%;
+    border-radius: 4px; 
+    margin-top:12px;
+}
+
 
 
  
