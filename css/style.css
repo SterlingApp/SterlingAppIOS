@@ -783,9 +783,11 @@ ion-item.item:hover a {
 		}
 
 .item-Image{
-	margin-top:20px;
+	margin-top:16px;
 }
-
+.item-Image1{
+	margin-top:24px;
+}
 
 
 
