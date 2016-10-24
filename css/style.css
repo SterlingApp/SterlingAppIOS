@@ -593,9 +593,9 @@ hr{
 	width: 200px;
 	height: 100%;
 	right: 10px;
-	margin-top:-25px; 
+	margin-top:-33px; 
 	background: #f7f7f7;
-	z-index: 1;
+	/* z-index: 1; */
 	/* font-size:20px; */
 	font-family: 'Avenir Next LT Pro';
 	font-size: 18px;
