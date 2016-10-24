@@ -175,9 +175,18 @@ a{
 	font-style: normal;
 	/*color: #D55D09;*/
 	color:#000;
-	 padding-top: 3px;
+	padding-top: 3px;
 	border-bottom:2px; 
 }
+@media  (max-width: 316px) {
+    .home-head  {
+       font-size:16px !important;
+     
+	border-bottom:2px;
+      
+    }
+}
+
 .home-head1
 {
 	
@@ -443,11 +452,18 @@ margin-left:20px;
 	font-family: 'Avenir Next LT Pro';
 	font-weight: normal;
 	font-style: normal;
-	font-size: 18px;
+	/* font-size: 18px; */
 	color: #f4851f;
 	text-align:center;
 	margin-top:15px;
 }
+@media  (max-width: 316px) {
+    .head_detail  {
+       font-size:14px !important;
+      
+    }
+}
+
 
 .head-details
 {
@@ -459,6 +475,13 @@ margin-left:20px;
 	text-align:center;
 	margin-top:15px;
 }
+@media  (max-width: 316px) {
+    .head-details {
+       font-size:14px !important;
+      
+    }
+}
+
 .head-details1
 {
 	font-size: 16px;
@@ -605,13 +628,13 @@ hr{
 	line-height:4px !important;
 	
 }
-@media  (max-width: 500px) {
+/* @media  (max-width: 500px) {
     .ItemlineHead {
        line-height:16px !important;
        
       
     }
-}
+} */
 .ItemlineHead1{
 	color:#C0BDBD;
 	font-family: 'Avenir Next LT Pro';
