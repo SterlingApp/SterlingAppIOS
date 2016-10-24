@@ -4149,6 +4149,7 @@ $scope.payme2=function(myForm){
 	$scope.TransDate="";
 	
 	$scope.getTransDate=function(){
+		
 		 var options = {
 				date: new Date(),
 				mode: 'date', // or 'time'
