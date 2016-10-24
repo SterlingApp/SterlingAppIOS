@@ -564,7 +564,7 @@ hr{
 	height:100px;
 }
 .tabs-background-stable>.tabs{
-	margin-top:45px;
+	/* margin-top:45px; */
 	background-color: #fff !important;
 	
 }
