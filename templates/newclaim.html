@@ -73,7 +73,7 @@
 	
         <label class="item item-input item-floating-label formselect" ng-class="{ 'has-errors' :myForm.startTransDate.$dirty && myForm.startTransDate.$invalid ,'no-errors' :myForm.startTransDate.$valid   }">
 		<span class="input-label ItemlineHead1">Enter Start Transaction Date</span>
-        <input type="text" ng-click="getTransDate()" name="startTransDate" ng-model="newclaimvalues.startTransDate" class="input-box input-boxfocus formselect" id="forminput" placeholder="Enter start Transaction Date"  required>
+        <input type="text" ng-click="getTransDate()" name="startTransDate" ng-model="newclaimvalues.startTransDate" class="input-box input-boxfocus formselect" id="forminput" ng-readonly="true" placeholder="Enter start Transaction Date"  required>
 		</label>
 		<div class="row">
 		  <span style="color:red" ng-show="myForm.endTransDate.$dirty && myForm.startTransDate.$invalid">
@@ -83,7 +83,7 @@
 		
 		<label class="item item-input item-floating-label formselect" ng-class="{ 'has-errors' :myForm.endTransDate.$dirty && myForm.endTransDate.$invalid ,'no-errors' :myForm.endTransDate.$valid   }">
 		<span class="input-label ItemlineHead1">Enter End Transaction Date</span>
-        <input type="text" ng-click="EndgetTransDate()" name="endTransDate" ng-model="newclaimvalues.endTransDate" class="input-box input-boxfocus formselect" id="forminput" placeholder="Enter End Transaction Date"  required>
+        <input type="text" ng-click="EndgetTransDate()" name="endTransDate" ng-model="newclaimvalues.endTransDate" class="input-box input-boxfocus formselect" id="forminput" ng-readonly="true" placeholder="Enter End Transaction Date"  required>
 		</label>
 		<div class="row">
 		  <span style="color:red" ng-show="myForm.endTransDate.$dirty && myForm.endTransDate.$invalid">
