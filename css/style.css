@@ -593,7 +593,7 @@ hr{
 	width: 200px;
 	height: 100%;
 	right: 10px;
-	margin-top:-30px; 
+	margin-top:-35px; 
 	background: #f7f7f7;
 	z-index: 1;
 	/* font-size:20px; */
@@ -717,7 +717,7 @@ font-size:30px;
 	font-weight: normal;
 	font-style: normal;
 	font-size:20px;
-	margin-left:15px;
+	margin-left:18px;
 }
 .chevronicon{
 	font-size:16px ! important;
@@ -777,7 +777,7 @@ ion-item.item:hover a {
 			.header-Actionbar{
 				height:20px;
 	            margin-top:25px;
-	            margin-left:-3px;
+	            margin-left:-2px;
 			}
 			
 		}
