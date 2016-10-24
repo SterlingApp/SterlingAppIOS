@@ -635,16 +635,16 @@ hr{
 	font-style: normal;
 	font-size: 18px;
 	padding-top: 5px;
-	line-height:4px !important;
+	/* line-height:4px !important; */
 	
 }
-@media  (max-width: 500px) {
+/* @media  (max-width: 500px) {
     .ItemlineHead {
        line-height:16px !important;
        
       
     }
-}
+} */
 .ItemlineHead1{
 	color:#C0BDBD;
 	font-family: 'Avenir Next LT Pro';
