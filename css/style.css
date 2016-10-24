@@ -434,6 +434,14 @@ margin-left:20px;
 	font-style: normal;
 	font-size: 18px;
 }
+@media  (max-width: 316px) {
+    .readMore  {
+       font-size:16px !important;
+     
+
+      
+    }
+}
 .readMore1
 {
 	float:right;
@@ -477,7 +485,7 @@ margin-left:20px;
 }
 @media  (max-width: 316px) {
     .head-details {
-       font-size:13px !important;
+       font-size:12px !important;
 	   
       
     }
