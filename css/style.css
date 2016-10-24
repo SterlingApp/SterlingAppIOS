@@ -479,14 +479,14 @@ margin-left:20px;
 	font-family: 'Avenir Next LT Pro';
 	font-weight: normal;
 	font-style: normal;
-	font-size: 18px;
+	/* font-size: 18px; */
 	color: #C0BDBD;
 	text-align:center;
 	margin-top:15px;
 }
 @media  (max-width: 316px) {
     .head-details {
-       font-size:11px !important;
+       font-size:14px !important;
 	   
       
     }
