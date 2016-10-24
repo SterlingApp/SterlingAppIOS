@@ -264,7 +264,15 @@ a{
   box-shadow: -5px 10px 0px -7px #547AAC, 5px 10px 0px -7px #547AAC; 
 } */
 
-.input-box1[type=number] {
+.input-box[type=date] {
+	
+	
+	color:#566571 !important;
+	font-family: 'Avenir Next LT Pro' !important;
+	font-size: 16px !important;
+	font-weight: normal !important;
+	font-style: normal !important;
+	
    /* height:25px;
    border: 0;
    width: 100%; 
