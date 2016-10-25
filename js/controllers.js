@@ -519,7 +519,7 @@ $scope.show1 = false;
 	}).error(function(err){
   // alert( JSON.stringify(err));
   });
-  $scope.plan_type={};
+ 
   
  
   
@@ -562,7 +562,7 @@ $scope.show1 = false;
 		
 	}
 	
-	$scope.plan_type={};
+	$scope.plan_types={};
 	
   }
 
@@ -594,7 +594,7 @@ $scope.show1 = false;
 	{
 		// $rootScope.hidecontent=false;
 		//window.history.back();
-		 $scope.plan_type={};
+		 $scope.plan_types={};
 		 $location.path("app/fsa");
 		
 		 //$scope.someinit();
