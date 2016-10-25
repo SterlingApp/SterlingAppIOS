@@ -594,8 +594,9 @@ $scope.show1 = false;
 	{
 		// $rootScope.hidecontent=false;
 		//window.history.back();
-		 $location.path("app/fsa");
 		 $scope.plan_type={};
+		 $location.path("app/fsa");
+		
 		 //$scope.someinit();
 	}
 })
