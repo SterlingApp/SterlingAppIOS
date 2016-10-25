@@ -798,12 +798,14 @@ ion-item.item:hover a {
 }
 
 input[type="date"]::before {
-	color: #999999;
+	
 	content: attr(placeholder);
 }
-input[type="date"] {
+/* input[type="date"] {
 	color: #ffffff;
-}
+} */
+input[type="date"]:focus::before,
+input[type="date"]:valid::before { display: none }
 
  
 		
