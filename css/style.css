@@ -797,7 +797,13 @@ ion-item.item:hover a {
 	margin-top:26px ! important;
 }
 
-
+input[type="date"]::before {
+	color: #999999;
+	content: attr(placeholder);
+}
+input[type="date"] {
+	color: #ffffff;
+}
 
  
 		
