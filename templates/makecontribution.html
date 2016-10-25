@@ -6,6 +6,13 @@
 		<p  class="headertitle">Make Contribution</p>
 	</div>
 </ion-header-bar>
+<style>
+input[type="text"], textarea {
+
+  background-color : #EDECEC; 
+
+}
+</style>
 
 <ion-view>
 	<ion-content class="bgnew">
@@ -84,7 +91,7 @@
 							<span class="input-label ItemlineHead1 ">
 							Enter Transaction
 							</span>
-							<input type="text"  readonly="true" ng-focus="getTransDate()"  name="transaction" ng-model="makecontribute.TransDate"  id="forminput " placeholder="Transaction Date"  required>
+							<input type="text"  ng-readonly="true" ng-focus="getTransDate()"  name="transaction" ng-model="makecontribute.TransDate"  id="forminput " placeholder="Transaction Date"  required>
 
 						</label>
 						
