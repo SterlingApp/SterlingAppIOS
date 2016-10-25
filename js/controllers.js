@@ -562,25 +562,7 @@ $scope.show1 = false;
 		
 	}
 	
-	// if(claim.MEANING === 'Dependent Care FSA'){
-		// // alert('hello')
-		
-		// $location.path("/newclaim");
-		
-	
-	// }else if(claim.MEANING === 'Transit FSA'){
-		
-		// $location.path("/transit");
-		
-		
-	// }else if(claim.MEANING === 'Limited Purpose Healthcare FSA'){
-		
-		// $location.path("/newclaimbicycle");
-	// }else if(claim.MEANING === 'Parking FSA'){
-	
-		// $location.path("/parking");
-		
-	// }
+	$scope.plan_type={};
 	
   }
 
@@ -613,6 +595,7 @@ $scope.show1 = false;
 		// $rootScope.hidecontent=false;
 		//window.history.back();
 		 $location.path("app/fsa");
+		 $scope.plan_type={};
 		 //$scope.someinit();
 	}
 })
@@ -729,6 +712,7 @@ $scope.show1 = false;
 		// $rootScope.hidecontent=true;
 		 //window.history.back();
 		 $location.path("new");
+		 $scope.plan_types={};
 	}
 	$scope.upload = function(){
 		$cordovaDialogs.confirm('Choose your option', 'Upload Receipt', ['Camera','Gallery'])
