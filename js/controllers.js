@@ -711,8 +711,9 @@ $scope.show1 = false;
 	{
 		// $rootScope.hidecontent=true;
 		 //window.history.back();
-		 $location.path("new");
 		 $scope.plan_types={};
+		 $location.path("new");
+		 
 	}
 	$scope.upload = function(){
 		$cordovaDialogs.confirm('Choose your option', 'Upload Receipt', ['Camera','Gallery'])
