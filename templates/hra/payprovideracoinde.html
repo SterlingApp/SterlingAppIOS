@@ -67,7 +67,7 @@
         <label class="item item-input  item-floating-label formselect" ng-class="{ 'has-errors' :myForm.starttransaction.$dirty && myForm.starttransaction.$invalid  ,'no-errors' :myForm.starttransaction.$valid  }">
 		<span class="input-label ItemlineHead1">Enter Start Transaction Date</span>
 							
-        <input type="text" ng-click="getTransDate()" name="starttransaction" ng-model="provideracoinde.startTransDate"  id="forminput" placeholder="start Transaction Date" ng-readonly="true" required>
+        <input type="text" ng-click="getTransDate()" name="starttransaction" ng-model="provideracoinde.startTransDate"  id="forminput" placeholder="start Transaction Date" class="bgnew" ng-readonly="true" required>
 		</label>
 		<div class="row">
 		  <span style="color:red" ng-show="myForm.starttransaction.$dirty && myForm.starttransaction.$invalid">
@@ -78,7 +78,7 @@
 		<label class="item item-input  item-floating-label formselect" ng-class="{ 'has-errors' :myForm.endtransaction.$dirty && myForm.endtransaction.$invalid  ,'no-errors' :myForm.endtransaction.$valid  }">
 		<span class="input-label ItemlineHead1">Enter End Transaction Date</span>
 							
-        <input type="text" ng-click="EndgetTransDate()" name="endtransaction" ng-model="provideracoinde.endTransDate"  id="forminput" placeholder="End Transaction Date" required>
+        <input type="text" ng-click="EndgetTransDate()" name="endtransaction" ng-model="provideracoinde.endTransDate"  id="forminput" placeholder="End Transaction Date" class="bgnew" ng-readonly="true" required>
 		</label>
 		<div class="row">
 		  <span style="color:red" ng-show="myForm.endtransaction.$dirty && myForm.endtransaction.$invalid">
