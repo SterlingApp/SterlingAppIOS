@@ -562,7 +562,7 @@ $scope.show1 = false;
 		
 	}
 	
-	$scope.plan_type={};
+	$scope.plan_types={};
 	
   }
 
