@@ -6,13 +6,7 @@
 		<p  class="headertitle">Make Contribution</p>
 	</div>
 </ion-header-bar>
-<style>
-input[type="text"], textarea {
 
-  background-color : #EDECEC; 
-
-}
-</style>
 
 <ion-view>
 	<ion-content class="bgnew">
@@ -91,7 +85,7 @@ input[type="text"], textarea {
 							<span class="input-label ItemlineHead1 ">
 							Enter Transaction
 							</span>
-							<input type="text"  ng-click="getTransDate()"  name="transaction" ng-model="makecontribute.TransDate" ng-readonly="true"  id="forminput " placeholder="Transaction Date" style="background-color : #EDECEC; " required>
+							<input type="text"  ng-click="getTransDate()"  name="transaction" ng-model="makecontribute.TransDate"  id="forminput " placeholder="Transaction Date" ng-readonly="true"  style="background-color : #EDECEC; " required>
 
 						</label>
 						
@@ -101,7 +95,7 @@ input[type="text"], textarea {
 							</span>
 						</div>
 						
-						<label class="item item-input item-select formselect" ng-class="{ 'has-errors' :myForm.selectdescription.$dirty && myForm.selectdescription.$invalid ,'no-errors' :myForm.selectdescription.$valid   }" >
+						<label class="item item-input item-select formselect" ng-class="{ 'has-errors' :myForm.selectdescription.$dirty && myForm.selectdescription.$invalid ,'no-errors' :myForm.selectdescription.$valid }" >
 							<span class="input-label ">
 							Description
 							</span>
