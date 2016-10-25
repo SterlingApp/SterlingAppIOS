@@ -76,18 +76,23 @@
 						
 						<div class="row">
 							<p style="color:Red" ng-show=" myForm.feeamount.$error.number">Please Enter Number's Only.</p>
-							<span style="color:red" ng-show="myForm.feeamount.$dirty && myForm.feeamount.$invalid">
-							<span ng-show="myForm.feeamount.$error.required"> FeeAmount is required.</span>
-							</span>
-						</div>
-
-						<label class="item item-input item-floating-label formselect"  ng-class="{ 'has-errors' :myForm.transaction.$dirty && myForm.transaction.$invalid ,'no-errors':myForm.transaction.$valid }">
-							<span class="input-label ItemlineHead1 ">
-							Enter Transaction
-							</span>
-							<input type="text"  ng-click="getTransDate()"  name="transaction" ng-model="makecontribute.TransDate"  id="forminput " placeholder="Transaction Date" ng-readonly="true"  style="background-color : #EDECEC; " required>
-
-						</label>
+		                       <span style="color:red" ng-show="myForm.feeamount.$dirty && myForm.feeamount.$invalid">
+                                <span ng-show="myForm.feeamount.$error.required"> FeeAmount is required.</span>
+                              </span>
+							</div>
+						 
+							 <label class="item item-input item-floating-label formselect"  ng-class="{ 'has-errors' :myForm.transaction.$dirty && myForm.transaction.$invalid ,'no-errors':myForm.transaction.$valid }">
+                             <span class="input-label ItemlineHead1 ">
+                               Enter Transaction
+	                           </span>
+                             <input type="text"  ng-click="getTransDate()" name="transaction" ng-model="makecontribute.TransDate" class="bgnew" id="forminput " placeholder="Transaction Date" ng-readonly="true" required>
+                            
+		                          </label>
+							<div class="row">
+							  <span style="color:red" ng-show="myForm.transaction.$dirty && myForm.transaction.$invalid">
+                                <span ng-show="myForm.transaction.$error.required"> Transaction Date is required.</span>
+                              </span>
+							</div>
 						
 						<div class="row">
 							<span style="color:red" ng-show="myForm.transaction.$dirty && myForm.transaction.$invalid">
