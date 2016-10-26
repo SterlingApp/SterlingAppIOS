@@ -1,5 +1,5 @@
 	
-<body ng-click="hideAll()">
+<body ng-click="hideAll()" ng-controller="HeaderCtrl">
 <ion-side-menus enable-menu-with-back-views="true"  >
    <ion-side-menu-content drag-content="false"  ng-click="hideAll()">
       <!-- <ion-nav-bar class="bar-transparent"  ng-controller="HeaderCtrl">
@@ -34,7 +34,7 @@
 		    <div class="togglemenu cardshadow1" ng-show="show1" style="height:100px;">            
 				<a href="#contact" style="color:#000;margin-left:15px;padding-top:20px;">Contact Us</a>
 				<br>
-				<a ng-click="logOut()" style=" color:#000;margin-left:15px;padding-top:20px;">Logout</a>
+				<a ng-click="Logout()" style=" color:#000;margin-left:15px;padding-top:20px;">Logout</a>
 								
 		  </div> 
 				
@@ -60,7 +60,7 @@
 	 
 							
 	</ion-side-menu-content>
-	<ion-side-menu  side="left" ng-controller="HeaderCtrl">
+	<ion-side-menu  side="left" >
       
       <ion-content class="width" >
 			<div style="margin-top:9px;">
