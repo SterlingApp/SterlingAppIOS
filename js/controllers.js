@@ -4460,6 +4460,7 @@ $scope.toggleCobra = function(){
 			if(buttonIndex=="1")
 			{
 				localStorage.clear();
+				//$location.path("login.html#/login");
 				window.location='login.html#/login';
 			}
 		  
@@ -4514,7 +4515,8 @@ $scope.show1 = false;
 			if(buttonIndex=="1")
 			{
 				localStorage.clear();
-				window.location='login.html#/login';
+				$location.path("login.html#/login");
+				// window.location='login.html#/login';
 			}	  
 		});
 	}
