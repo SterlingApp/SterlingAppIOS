@@ -825,7 +825,10 @@ input::-moz-placeholder {
  color: #566571!important;  
   opacity: 1;
 } 
-
+.Select-Float{
+	margin-left:20px;
+	margin-bottom:-9px;
+ }
 
 
  
