@@ -34,7 +34,7 @@
       
 	          <div class="item item-avatar">
 				<img src="img/item/account_balance.png">
-				<div class="ItemlineHead cardContent">Account balance</div>
+				<div class="ItemlineHead cardContent">Account Balance</div>
 				<div class="ItemlineValueText cardContent">{{newclaim_balance| currency}}</div>
 		        </div>
 	 </div>
@@ -46,12 +46,12 @@
 				select
 				</span>
 				<select class="bgnew" name="Bankaccount" ng-model="newclaimvalues.Bankaccount" ng-options="pay.DISPLAY_NAME for pay in bank_details" required>
-					<option selected disabled value="" class="ItemlineHead1"> Select Bankaccount</option>
+					<option selected disabled value="" class="ItemlineHead1"> Select Bank Account</option>
 				</select>
 			</label>
 			<div class="row">
 				<span style="color:red" ng-show="myForm.Bankaccount.$dirty && myForm.Bankaccount.$invalid">
-					<span ng-show="myForm.Bankaccount.$error.required"> Bankaccount is required.</span>
+					<span ng-show="myForm.Bankaccount.$error.required"> Bank Account is required.</span>
 				</span>
 		 </div>				 
       
