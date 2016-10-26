@@ -654,7 +654,7 @@ hr{
     }
 } */
 .ItemlineHead1{
-	color:#C0BDBD;
+	color:#5985AF;
 	font-family: 'Avenir Next LT Pro';
 	font-weight: normal;
 	font-style: normal;
@@ -810,6 +810,16 @@ ion-item.item:hover a {
 .icon-upload{
 	margin-top:10px;
 }
+ 
+input:-moz-placeholder { 
+color: #566571!important; 
+ opacity: 1; 
+}
+ 
+input::-moz-placeholder {  
+ color: #566571!important;  
+  opacity: 1;
+} 
 
 
 

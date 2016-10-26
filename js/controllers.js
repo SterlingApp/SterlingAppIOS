@@ -3200,6 +3200,19 @@ $scope.show1 = false;
     $scope.hsaaccId=$rootScope.hsaaccId;
     $scope.hsaaccno=$rootScope.hsaaccno;
 	$scope.msghide=true;
+	$scope.floatlabel=false;
+	$scope.floatlabel1=false;
+	
+	$scope.SelectFloat = function ()
+	{ 
+		$scope.floatlabel=true; 
+	}
+	$scope.SelectFloat1 = function ()
+	{ 
+	
+		$scope.floatlabel1=true;
+ 
+	}
 	
 	 // $scope.ds=true;
 	$scope.upload = function(){
@@ -3384,6 +3397,8 @@ $scope.show1 = false;
 				var myEl = angular.element( document.querySelector( '#receipt' ) );
 				myEl.removeAttr('src');
 				 $scope.paymeValues={};
+				 $scope.floatlabel=false;
+				$scope.floatlabel1=false;
 				
 				
 		});
@@ -3400,14 +3415,10 @@ $scope.show1 = false;
 						var myEl = angular.element( document.querySelector( '#receipt' ) );
 						myEl.removeAttr('src');
 				     	 $scope.paymeValues={};
+						 $scope.floatlabel=false;
+						$scope.floatlabel1=false;
 					 		 
-                     // $scope.ds=false;						
-				  
-				 
-					 
-				     
-					
-				    
+			    
 		});
 		return false;
 		
