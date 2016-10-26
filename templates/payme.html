@@ -51,10 +51,10 @@ input[type=text]:focus {
 		        </div>
 			</div>
 				     <div class="list ">
-							<label class="item item-input item-select formselect bgnew" ng-class="{ 'has-errors' :myForm.selectAccount.$dirty && myForm.selectAccount.$invalid,'no-errors' :myForm.selectAccount.$valid }">
-							  <div class="input-label ">
-							select
-							 </div>
+							<label class="item item-input item-select item-floating-label  formselect" ng-class="{ 'has-errors' :myForm.selectAccount.$dirty && myForm.selectAccount.$invalid,'no-errors' :myForm.selectAccount.$valid }">
+							  <span class="input-label ">
+							  select Bank Account
+							 </span>
 							<select class="bgnew" name="selectAccount" ng-model="paymeValues.selectAccount" ng-options="pay.DISPLAY_NAME for pay in bank_details" required>
 							  <option selected disabled value=""> Select Bank Account</option>
 							 <!-- <option ng-repeat="data in bank_details" >{{data.DISPLAY_NAME}}</option> -->
