@@ -13,19 +13,19 @@
 		<div class="card">
 			<div class="item item-avatar itemleft  item-text-wrap ItemLinehr ">
 				<img src="img/item/Total-contribution.png" class="item-Image1">
-				<div class="ItemlineHead cardContent">Total contributions for 2016</div>
+				<div class="ItemlineHead cardContent">Total Contributions for 2016</div>
 
 				<div class="ItemlineValueText cardContent">{{total_contribution.CURRENT_YR_CONTRB| currency}}</div>
 			</div>
 			<div class="item item-avatar itemleft item-text-wrap">
 				<img src="img/item/Allowable-contributions.png" class="item-Image1">
-				<div class="ItemlineHead cardContent">Allowable contributions remaining for 2016</div>
+				<div class="ItemlineHead cardContent">Allowable Contributions Remaining for 2016</div>
 				<div class="ItemlineValueText cardContent">{{total_contribution.CONTRB_LIMIT  | currency}}</div>
 			</div>
 
 			<div class="item item-avatar itemleft item-text-wrap">
 				<img src="img/item/Total-disburesment.png" class="item-Image1">
-				<div class="ItemlineHead cardContent">Total disbursement for 2016</div>
+				<div class="ItemlineHead cardContent">Total Disbursement for 2016</div>
 				<div class="ItemlineValueText cardContent">{{total_contribution.TOTAL_DISB_AMOUNT | currency}}</div>
 			</div>
 		</div>
@@ -48,7 +48,7 @@
 						
 						<div class="row">
 							<span style="color:red" ng-show="myForm.selectAccount.$dirty && myForm.selectAccount.$invalid">
-							<span ng-show="myForm.selectAccount.$error.required"> selectAccount is required.</span>
+							<span ng-show="myForm.selectAccount.$error.required">  Bank Account is required.</span>
 							</span>
 						</div>
 
@@ -68,7 +68,7 @@
 
 						<label class="item item-input item-floating-label formselect" ng-class="{ 'has-errors' :myForm.feeamount.$dirty && myForm.feeamount.$invalid ,'no-errors' :myForm.feeamount.$valid   }">
 							<span class="input-label ItemlineHead1">
-							Enter FeeAmount
+							Enter Fee Amount
 							</span>
 
 							<input type="number"   name="feeamount" ng-model="makecontribute.feeamount" ng-pattern='\\d+' id="forminput" placeholder="Optional Fee Amount($)" required>
@@ -77,7 +77,7 @@
 						<div class="row">
 							<p style="color:Red" ng-show=" myForm.feeamount.$error.number">Please Enter Number's Only.</p>
 		                       <span style="color:red" ng-show="myForm.feeamount.$dirty && myForm.feeamount.$invalid">
-                                <span ng-show="myForm.feeamount.$error.required"> FeeAmount is required.</span>
+                                <span ng-show="myForm.feeamount.$error.required"> Fee Amount is required.</span>
                               </span>
 							</div>
 						 
@@ -114,7 +114,7 @@
 						
 						<div class="row">
 							<span style="color:red" ng-show="myForm.selectdescription.$dirty && myForm.selectdescription.$invalid">
-							<span ng-show="myForm.selectdescription.$error.required"> selectDescription is required.</span>
+							<span ng-show="myForm.selectdescription.$error.required"> Description is required.</span>
 							</span>
 						</div>
 					</div>
