@@ -34,24 +34,24 @@
       
 	          <div class="item item-avatar">
 				<img src="img/item/account_balance.png">
-				<div class="ItemlineHead cardContent">Account balance</div>
+				<div class="ItemlineHead cardContent">Account Balance</div>
 				<div class="ItemlineValueText cardContent">{{newclaim_balance| currency}}</div>
 		        </div>
 	 </div>
         
           
             <div class="list">
-            <label class="item item-input item-select formselect bgnew "  ng-class="{ 'has-errors' :myForm.Bankaccount.$dirty && myForm.Bankaccount.$invalid,'no-errors' :myForm.Bankaccount.$valid }">
+            <label class="item item-input item-select formselect bgnew "  ng-class="{ 'has-errors' :myForm.payee.$dirty && myForm.payee.$invalid,'no-errors' :myForm.payee.$valid }">
 				<span class="input-label bgnew">
 				select
 				</span>
-				<select class="bgnew" name="Bankaccount" ng-model="newclaimvalues.selectpayee" ng-options="pay.VENDOR_NAME for pay in payee" required>
+				<select class="bgnew" name="payee" ng-model="newclaimvalues.selectpayee" ng-options="pay.VENDOR_NAME for pay in payee" required>
 					<option selected disabled value="" class="ItemlineHead1"> Select payee</option>
 				</select>
 			</label>
 			<div class="row">
-				<span style="color:red" ng-show="myForm.Bankaccount.$dirty && myForm.Bankaccount.$invalid">
-					<span ng-show="myForm.Bankaccount.$error.required"> Bankaccount is required.</span>
+				<span style="color:red" ng-show="myForm.payee.$dirty && myForm.payee.$invalid">
+					<span ng-show="myForm.payee.$error.required"> Payee is required.</span>
 				</span>
 		 </div>				 
       
