@@ -781,6 +781,10 @@ ion-item.item:hover a {
 	margin-left:15px;
 	/* float:right; */
 }
+
+.input-bgcolor{
+	background-color:;
+}
 @media screen and (max-width: 464px) {
 			.header-Actionbar{
 				height:20px;
@@ -797,15 +801,17 @@ ion-item.item:hover a {
 	margin-top:26px ! important;
 }
 
-input[type="date"]::before {
+.ion-android-upload{
 	
-	content: attr(placeholder);
+	font-size:23px !important;
+	margin-right:10px;
+	margin-top:10px;
+ }
+.icon-upload{
+	margin-top:10px;
 }
-/* input[type="date"] {
-	color: #ffffff;
-} */
-input[type="date"]:focus::before,
-input[type="date"]:valid::before { display: none }
+
+
 
  
 		
