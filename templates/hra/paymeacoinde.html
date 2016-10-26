@@ -42,12 +42,12 @@
 				select
 				</span>
 				<select class="bgnew" name="selectPayee"  ng-model="acoinde.selectAccount" ng-options="pay.DISPLAY_NAME for pay in bank_details" required>
-					<option selected disabled value="" class="ItemlineHead1"> Select Bankaccount</option>
+					<option selected disabled value="" class="ItemlineHead1"> Select Bank Account</option>
 				</select>
 			</label>
 			<div class="row">
 				<span style="color:red" ng-show="myForm.selectPayee.$dirty && myForm.selectPayee.$invalid">
-					<span ng-show="myForm.selectPayee.$error.required"> Bankaccount is required.</span>
+					<span ng-show="myForm.selectPayee.$error.required"> Bank Account is required.</span>
 				</span>
 		 </div>			
       
@@ -67,7 +67,7 @@
         <label class="item item-input  item-floating-label formselect" ng-class="{ 'has-errors' :myForm.starttransaction.$dirty && myForm.starttransaction.$invalid  ,'no-errors' :myForm.starttransaction.$valid  }">
 		<span class="input-label ItemlineHead1">Enter Start Transaction Date</span>
 							
-        <input type="text" ng-click="getTransDate()" class="bgnew" name="starttransaction" ng-model="acoinde.startTransDate"  id="forminput" placeholder="start Transaction Date"   ng-readonly="true" required>
+        <input type="text" ng-click="getTransDate()" class="bgnew" name="starttransaction" ng-model="acoinde.startTransDate"  id="forminput" placeholder="Enter start Transaction Date"   ng-readonly="true" required>
 		</label>
 		<div class="row">
 		  <span style="color:red" ng-show="myForm.starttransaction.$dirty && myForm.starttransaction.$invalid">
@@ -78,7 +78,7 @@
 		<label class="item item-input  item-floating-label formselect" ng-class="{ 'has-errors' :myForm.endtransaction.$dirty && myForm.endtransaction.$invalid  ,'no-errors' :myForm.endtransaction.$valid  }">
 		<span class="input-label ItemlineHead1">Enter End Transaction Date</span>
 							
-        <input type="text" ng-click="EndgetTransDate()" class="bgnew" name="endtransaction" ng-model="acoinde.endTransDate"  id="forminput" placeholder="End Transaction Date"  ng-readonly="true"  required>
+        <input type="text" ng-click="EndgetTransDate()" class="bgnew" name="endtransaction" ng-model="acoinde.endTransDate"  id="forminput" placeholder="Enter End Transaction Date"  ng-readonly="true"  required>
 		</label>
 		<div class="row">
 		  <span style="color:red" ng-show="myForm.endtransaction.$dirty && myForm.endtransaction.$invalid">
