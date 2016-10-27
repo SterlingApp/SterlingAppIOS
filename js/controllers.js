@@ -4504,12 +4504,15 @@ $scope.toggleCobra = function(){
 	
 	   $cordovaDialogs.confirm('Do you want to Logout', 'Are you sure', ['Yes','No'])
 		.then(function(buttonIndex) {
-			if(buttonIndex=="Yes")
+			if(buttonIndex=="1")
 			{
 				alert();
 				localStorage.clear();
 				//$location.path("login.html#/login");
 				window.location='login.html#/login';
+			}
+			else{
+				ionic.Platform.exitApp();
 			}
 		  
 		});
@@ -4560,7 +4563,8 @@ $scope.show1 = false;
 			}	  
 		});
 	}
-	$scope.goBack = function() {
+	$scope.goBack = function()
+	{
 		//alert(localStorage.getItem("backCount"));
 		if (localStorage.getItem("backCount")==1) {
 			//code
