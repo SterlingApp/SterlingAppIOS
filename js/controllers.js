@@ -65,7 +65,7 @@ angular.module('starter.controllers', [])
 					// alert(localStorage.getItem('access_token')+"--"+localStorage.getItem('username'));
 					
 					//$location.path("/app/portfolio");
-					window.location.href = 'index.html#/app/hsa';				
+					window.location.href = 'app';				
 				}else if(data.status=="FAILED"){
 					 $ionicLoading.hide()
 					 $cordovaDialogs.alert('Username or password is incorrect ', 'Sorry', 'OK')
