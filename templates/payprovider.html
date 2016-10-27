@@ -59,7 +59,7 @@ input[type=text]:focus {
 				<span class="input-label bgnew">
 				select
 				</span>
-				<select class="bgnew" name="selectPayee" ng-model="payprovierValues.selectPayee" ng-options="pay.VENDOR_NAME for pay in payee" required>
+				<select class="bgnew" name="selectPayee" ng-model="payprovierValues.selectPayee" ng-options="pay.VENDOR_NAME for pay in payee" ng-change="SelectFloat()" required>
 					<option selected disabled value="" class="ItemlineHead1"> Select Payee</option>
 				</select>
 			</label>
