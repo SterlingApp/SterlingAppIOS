@@ -41,11 +41,12 @@
         
           
             <div class="list">
+			<p class=" ItemlineHead1 Select-Float" ng-show="floatlabel">Select Payee</p>
             <label class="item item-input item-select formselect bgnew "  ng-class="{ 'has-errors' :myForm.payee.$dirty && myForm.payee.$invalid,'no-errors' :myForm.payee.$valid }">
 				<span class="input-label bgnew">
 				select
 				</span>
-				<select class="bgnew" name="payee" ng-model="newclaimvalues.selectpayee" ng-options="pay.VENDOR_NAME for pay in payee" required>
+				<select class="bgnew" name="payee" ng-model="newclaimvalues.selectpayee" ng-options="pay.VENDOR_NAME for pay in payee" ng-change="SelectFloat()" required>
 					<option selected disabled value="" class="ItemlineHead1"> Select payee</option>
 				</select>
 			</label>
