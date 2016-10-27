@@ -4531,7 +4531,7 @@ $scope.toggleCobra = function(){
        } else {
          // console.log('You are not sure');
 		 localStorage.clear();
-		 $location.path("login");
+		 $location.path("login.html#/login");
        }
      });
    };
