@@ -4418,7 +4418,7 @@ $scope.payme2=function(myForm){
    .then(function(buttonIndex) {
 	   if(buttonIndex=="1")
 			{
-				alert();
+				
 				localStorage.clear();
 				window.location='login.html#/login';
 			}
@@ -4506,6 +4506,7 @@ $scope.toggleCobra = function(){
 		.then(function(buttonIndex) {
 			if(buttonIndex=="1")
 			{
+				alert();
 				localStorage.clear();
 				//$location.path("login.html#/login");
 				window.location='login.html#/login';
