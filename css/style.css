@@ -301,11 +301,11 @@ a{
 
 .item-select select
 {
-	left:0;
+	left:4px;
     right: auto;
     padding: 13px 45px 15px 10px;
     direction: ltr;
-	 max-width: 100%;
+	max-width: 100%;
     width: 100%;
 }
 
@@ -826,7 +826,7 @@ input::-moz-placeholder {
   opacity: 1;
 } 
 .Select-Float{
-	margin-left:18px;
+	margin-left:20px;
 	margin-bottom:-3px;
  }
 
