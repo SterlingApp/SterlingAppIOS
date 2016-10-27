@@ -35,11 +35,12 @@
 			<div class="row responsive-sm">
 				<div class="col col-75 center">
 					<div class="list ">
-						<label class="item item-input item-select formselect" ng-class="{ 'has-errors' :myForm.selectAccount.$dirty && myForm.selectAccount.$invalid ,'no-errors' :myForm.selectAccount.$valid }" >
+						<p class=" ItemlineHead1 Select-Float" ng-show="floatlabel">Select Payee</p>
+						<label class="item item-input item-select formselect bgnew" ng-class="{ 'has-errors' :myForm.selectAccount.$dirty && myForm.selectAccount.$invalid ,'no-errors' :myForm.selectAccount.$valid }" >
 							<div class="input-label ItemlineHead1">
 							select
 							</div>
-							<select class="bgnew" name="selectAccount" ng-model="makecontribute.selectAccount" required>
+							<select class="bgnew" name="selectAccount" ng-model="makecontribute.selectAccount" ng-change="SelectFloat()" required>
 							<option value="" > Select Bank Account</option>
 							<option ng-repeat="data in bank_details">{{data.DISPLAY_NAME}}</option>
 
@@ -99,12 +100,12 @@
 							<span ng-show="myForm.transaction.$error.required"> Transaction Date is required.</span>
 							</span>
 						</div>
-						
-						<label class="item item-input item-select formselect" ng-class="{ 'has-errors' :myForm.selectdescription.$dirty && myForm.selectdescription.$invalid ,'no-errors' :myForm.selectdescription.$valid }" >
+						<p class="input-label ItemlineHead1 Select-Float" ng-show="floatlabel1">Select Description</p>
+						<label class="item item-input item-select formselect bgnew" ng-class="{ 'has-errors' :myForm.selectdescription.$dirty && myForm.selectdescription.$invalid ,'no-errors' :myForm.selectdescription.$valid }" >
 							<span class="input-label ">
 							Description
 							</span>
-							<select class="bgnew" name="selectdescription" ng-model="makecontribute.selectdescription" required>
+							<select class="bgnew" name="selectdescription" ng-model="makecontribute.selectdescription" ng-change="SelectFloat1()" required>
 							<option value="" > Select Description</option>
 							<option ng-repeat="data in description">{{data.FEE_NAME}}</option>
 
