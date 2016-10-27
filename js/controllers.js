@@ -3483,7 +3483,13 @@ $scope.payme2=function(myForm){
 	localStorage.setItem("backCount","4");
 	$scope.hsaaccId=$rootScope.hsaaccId;
 	$scope.payprovierValues={selectPayee:'',patient_name:'',amount:'',TransDate:'',description:''};
+	$scope.floatlabel=false;
 	
+	
+	$scope.SelectFloat = function ()
+	{ 
+		$scope.floatlabel=true; 
+	}
 	$scope.TransDate="";
 	$scope.upload = function(){
 		$cordovaDialogs.confirm('Choose your option', 'Upload Receipt', ['Camera','Gallery'])
@@ -3675,6 +3681,7 @@ $scope.payme2=function(myForm){
 				var myEl = angular.element( document.querySelector( '#receipt' ) );
 				myEl.removeAttr('src');
 				$scope.payprovierValues={};
+				$scope.floatlabel=false;
 		});
 		return false;
 		}else if(data.status == "FAILED"){
@@ -3685,6 +3692,7 @@ $scope.payme2=function(myForm){
 				var myEl = angular.element( document.querySelector( '#receipt' ) );
 				myEl.removeAttr('src');
 				$scope.payprovierValues={};
+				$scope.floatlabel=false;
 		});
 		return false;
 		}
