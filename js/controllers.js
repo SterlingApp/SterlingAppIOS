@@ -4504,7 +4504,7 @@ $scope.toggleCobra = function(){
 	
 	   $cordovaDialogs.confirm('Do you want to Logout', 'Are you sure', ['Yes','No'])
 		.then(function(buttonIndex) {
-			if(buttonIndex=="1")
+			if(buttonIndex=="Yes")
 			{
 				alert();
 				localStorage.clear();
@@ -4523,15 +4523,7 @@ $scope.toggleCobra = function(){
 		window.history.back();
 		//$location.path("/hsa")
 	}
-	 // $scope.openNav=function()
-  // {
-	  // document.getElementById("mySidenav").style.width = "250px";
-  // }
-  
-  // $scope.closeNav=function(event) {
-		// document.getElementById("mySidenav").style.width = "0";
-		 // event.stopPropagation(mySidenav);  
-	// }
+	
 $scope.show1 = false;
   $scope.show2 = false;
   $scope.click1 = function($event) { 
