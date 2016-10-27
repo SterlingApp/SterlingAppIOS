@@ -4531,7 +4531,11 @@ $scope.toggleCobra = function(){
        } else {
          // console.log('You are not sure');
 		 localStorage.clear();
-		 $location.path("login.html#/login");
+		 	  $timeout(function () {
+					  alert();
+      			  $location.path("login.html#/login");
+  }, 2000);
+		
        }
      });
    };
