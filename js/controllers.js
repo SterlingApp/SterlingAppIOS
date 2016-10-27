@@ -4877,7 +4877,7 @@ $scope.show1 = false;
 			// alert(JSON.stringify($rootScope.newclaim_balance));
 		  }
 	  }
-	if(claim.MEANING === 'HRAINDE'){
+	if(claim.MEANING === 'HR4INDE'){
 		 // alert('hello')
 		
 		$location.path("/paymeacoinde");
