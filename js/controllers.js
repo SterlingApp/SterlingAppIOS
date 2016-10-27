@@ -4177,7 +4177,7 @@ $scope.payme2=function(myForm){
 	}
 	
 	$scope.getTransDate=function(){
-		cordova.plugins.Keyboard.close();
+		
 		 var options = {
 				date: new Date(),
 				mode: 'date', // or 'time'
