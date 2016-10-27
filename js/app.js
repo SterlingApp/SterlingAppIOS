@@ -274,6 +274,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
   
   
    .state('newclaim', {
+	  cache: false,
       url: '/newclaim',
           templateUrl: 'templates/newclaim.html',
 		  controller: 'newclaimCtrl'
@@ -324,6 +325,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
 		  controller: 'parkingCtrl'
     })
  .state('new', {
+	  cache: false,
       url: '/new',
           templateUrl: 'templates/new.html',
 		  controller: 'NewCtrl'
