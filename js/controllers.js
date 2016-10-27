@@ -4518,6 +4518,21 @@ $scope.toggleCobra = function(){
 		});
 	  
   }
+   $scope.showConfirm = function() {
+     var confirmPopup = $ionicPopup.confirm({
+       title: 'Consume Ice Cream',
+       template: 'Are you sure you want to eat this ice cream?',
+         okText: 'yes',
+         cancelText: 'no',
+     });
+     confirmPopup.then(function(res) {
+       if(res) {
+         alert('You are sure');
+       } else {
+         console.log('You are not sure');
+       }
+     });
+   };
 	
 	
 	$scope.goback=function()
