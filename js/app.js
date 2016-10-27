@@ -87,6 +87,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
     controller: 'AppCtrl'
   })
   .state('login', {
+	cache: false,
     url: '/login',
     templateUrl: 'templates/login.html',
 	controller: 'loginCtrl'
