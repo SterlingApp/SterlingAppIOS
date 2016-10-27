@@ -418,7 +418,8 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
 	
     
     .state('fsapayprovider', {
-      url: '/fsapayprovider',
+		cache: false,
+		url: '/fsapayprovider',
           templateUrl: 'templates/fsa/fsapayprovider.html',
 		  controller: 'fsapayproviderCtrl'
     })
@@ -428,7 +429,8 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
 		  controller: 'fsatransitCtrl'
     })
     .state('fsadependent', {
-      url: '/fsadependent',
+		cache: false,
+		url: '/fsadependent',
           templateUrl: 'templates/fsa/fsadependent.html',
 		  controller: 'fsadependentCtrl'
     })
