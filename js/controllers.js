@@ -4530,6 +4530,7 @@ $scope.toggleCobra = function(){
          console.log('You are not sure');
        } else {
          // console.log('You are not sure');
+		 localStorage.clear();
 		 $location.path("login");
        }
      });
