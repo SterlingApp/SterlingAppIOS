@@ -47,7 +47,7 @@
 				select
 				</span>
 				<select class="bgnew" name="payee" ng-model="newclaimvalues.selectpayee" ng-options="pay.VENDOR_NAME for pay in payee" ng-change="SelectFloat()" required>
-					<option selected disabled value="" class="ItemlineHead1"> Select payee</option>
+					<option selected disabled value="" class="ItemlineHead1"> Select Payee</option>
 				</select>
 			</label>
 			<div class="row">
@@ -82,8 +82,8 @@
 		
 	
         <label class="item item-input item-floating-label formselect" ng-class="{ 'has-errors' :myForm.startTransDate.$dirty && myForm.startTransDate.$invalid  ,'no-errors' :myForm.startTransDate.$valid   }">
-		<span class="input-label ItemlineHead1">Enter start Transaction Date</span>
-        <input type="text" ng-focus="getTransDate()" class="bgnew" name="startTransDate" ng-model="newclaimvalues.startTransDate"  id="forminput"  placeholder=" Enter start Transaction Date"  ng-readonly="true" required>
+		<span class="input-label ItemlineHead1">Enter Start Transaction Date</span>
+        <input type="text" ng-focus="getTransDate()" class="bgnew" name="startTransDate" ng-model="newclaimvalues.startTransDate"  id="forminput"  placeholder=" Enter Start Transaction Date"  ng-readonly="true" required>
 		</label>
 		<div class="row">
 		  <span style="color:red" ng-show="myForm.startTransDate.$dirty && myForm.startTransDate.$invalid">
