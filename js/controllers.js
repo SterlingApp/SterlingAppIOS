@@ -4994,6 +4994,13 @@ $scope.show1 = false;
 	$scope.hsaaccno=$rootScope.hsaaccno;
 	$scope.acoinde = {selectAccount:'',amount:'',description:'',startTransDate:'',endTransDate:''};
 	$scope.imgSrc=[];
+	$scope.floatlabel=false;
+	
+	$scope.SelectFloat = function ()
+	{ 
+		$scope.floatlabel=true; 
+	}
+	
 	
 	$scope.upload = function(){
 		$cordovaDialogs.confirm('Choose your option', 'Upload Receipt', ['Camera','Gallery'])
@@ -5181,6 +5188,7 @@ $scope.show1 = false;
 				myEl.removeAttr('src');
 				
 				 $scope.acoinde={};
+				 $scope.floatlabel=false;
 					
 		});
 		return false;
@@ -5196,6 +5204,7 @@ $scope.show1 = false;
 						var myEl = angular.element( document.querySelector( '#receipt' ) );
 						myEl.removeAttr('src');
 				      $scope.acoinde={};
+					  $scope.floatlabel=false;
 					 
 				
 		});
@@ -5224,6 +5233,12 @@ $scope.show1 = false;
 	$scope.hraacc= $rootScope.hraaccno;
 	$scope.provideracoinde={selectpayee:'',amount:'',description:'',startTransDate:'',endTransDate:''};
 	$scope.imgSrc=[];
+	$scope.floatlabel=false;
+	
+	$scope.SelectFloat = function ()
+	{ 
+		$scope.floatlabel=true; 
+	}
 	
 	$scope.upload = function(){
 		$cordovaDialogs.confirm('Choose your option', 'Upload Receipt', ['Camera','Gallery'])
@@ -5308,6 +5323,8 @@ $scope.show1 = false;
 				myEl.removeAttr('src');
 				
 				 $scope.provideracoinde={};
+				 $scope.floatlabel=false;
+	
 					
 		});
 		return false;
@@ -5323,12 +5340,7 @@ $scope.show1 = false;
 						var myEl = angular.element( document.querySelector( '#receipt' ) );
 						myEl.removeAttr('src');
 				      $scope.provideracoinde={};
-					  
-				 
-					 
-				      
-					
-				    
+					  $scope.floatlabel=false;	    
 		});
 		return false;
 		
