@@ -4520,16 +4520,17 @@ $scope.toggleCobra = function(){
   }
    $scope.showConfirm = function() {
      var confirmPopup = $ionicPopup.confirm({
-       title: 'Consume Ice Cream',
-       template: 'Are you sure you want to eat this ice cream?',
-         okText: 'yes',
-         cancelText: 'no',
+       title: 'Do you want to Logout',
+       template: 'Are you sure',
+         okText: 'No',
+         cancelText: 'Yes',
      });
      confirmPopup.then(function(res) {
        if(res) {
-         alert('You are sure');
-       } else {
          console.log('You are not sure');
+       } else {
+         // console.log('You are not sure');
+		 $location.path("login");
        }
      });
    };
