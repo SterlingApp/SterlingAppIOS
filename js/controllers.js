@@ -704,6 +704,12 @@ $scope.show1 = false;
 	$scope.newclaim_balance=$rootScope.newclaim_balance;
     $scope.newclaimvalues={taxid:'',amount:'',dependent:'',patient:'',Bankaccount:'',startTransDate:'',endTransDate:''};
 	$scope.imgSrc=[];
+	$scope.floatlabel=false;
+	
+	$scope.SelectFloat = function ()
+	{ 
+		$scope.floatlabel=true; 
+	}
 	 
 	 $ionicScrollDelegate.scrollBottom(true);
 	
@@ -923,6 +929,7 @@ $scope.show1 = false;
 				myEl.removeAttr('src');
 				
 				 $scope.newclaimvalues={};
+				 $scope.floatlabel=false;
 					
 		});
 		return false;
@@ -938,12 +945,7 @@ $scope.show1 = false;
 						var myEl = angular.element( document.querySelector( '#receipt' ) );
 						myEl.removeAttr('src');
 				      $scope.newclaimvalues={};
-					
-				 
-					 
-				     
-					
-				    
+					  $scope.floatlabel=false;		    
 		});
 		return false;
 		
