@@ -537,7 +537,7 @@ $scope.show1 = false;
  
   
   $scope.plan_type={};
-  $scope.redirectTo=function(claim){
+  $scope.getClaimData=function(claim){
  	//alert(JSON.stringify(claim.MEANING));
 	  for(var i=0;i<$scope.available_balances.length;i++){
 		  
@@ -638,7 +638,7 @@ $scope.show1 = false;
   // alert( JSON.stringify(err));
   });
   
-  $scope.redirectTo=function(claim){
+  $scope.getClaimData=function(claim){
  	//alert(JSON.stringify(claim.MEANING));
 	  for(var i=0;i<$scope.available_balances.length;i++){
 		  
@@ -4896,7 +4896,7 @@ $scope.show1 = false;
 	}).error(function(err){
   // alert( JSON.stringify(err));
   });
-  $scope.redirectTo=function(claim){
+  $scope.getClaimData=function(claim){
  	// alert(JSON.stringify(claim.MEANING));
 	  for(var i=0;i<$scope.available_balances.length;i++){
 		  
@@ -4944,7 +4944,7 @@ $scope.show1 = false;
   });
   
   $scope.plan_type="";
-  $scope.redirectTo=function(claim){
+  $scope.getClaimData=function(claim){
  	 // alert(JSON.stringify(claim.MEANING));
 	  for(var i=0;i<$scope.available_balances.length;i++){
 		  
