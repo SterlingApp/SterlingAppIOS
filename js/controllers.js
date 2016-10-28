@@ -4517,18 +4517,18 @@ $scope.toggleCobra = function(){
 	
 	   navigator.notification.confirm('Do you want to Logout', 'Are you sure', ['Yes','No'])
 		.then(function(buttonIndex) {
-			if(buttonIndex=="1")
-			{
-				alert();
-				localStorage.clear();
-				//$location.path("login.html#/login");
-				window.location='login.html#/login';
-			}
-			else{
-				ionic.Platform.exitApp();
-			}
+			// if(buttonIndex=="1")
+			// {
+				// alert();
+				// localStorage.clear();
+				
+				// window.location='login.html#/login';
+			// }
+			// else{
+				// ionic.Platform.exitApp();
+			// }
 		  
-		});
+		// });
   }, 10000);
 	   
 	  
