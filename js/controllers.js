@@ -4515,7 +4515,7 @@ $scope.toggleCobra = function(){
  $scope.logOut=function()
   {
 	
-	   $cordovaDialogs.confirm('Do you want to Logout', 'Are you sure', ['Yes','No'])
+	   navigator.notification.confirm('Do you want to Logout', 'Are you sure', ['Yes','No'])
 		.then(function(buttonIndex) {
 			if(buttonIndex=="1")
 			{
