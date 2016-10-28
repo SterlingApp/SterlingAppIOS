@@ -4514,8 +4514,8 @@ $scope.toggleCobra = function(){
 
  $scope.logOut=function()
   {
-	
-	   navigator.notification..confirm('Do you want to Logout', 'Are you sure', ['Yes','No'])
+	  $timeout(function () {
+      $cordovaDialogs.confirm('Do you want to Logout', 'Are you sure', ['Yes','No'])
 		.then(function(buttonIndex) {
 			if(buttonIndex=="1")
 			{
@@ -4529,6 +4529,8 @@ $scope.toggleCobra = function(){
 			}
 		  
 		});
+  }, 7000);
+	   
 	  
   }
    $scope.showConfirm = function() {
