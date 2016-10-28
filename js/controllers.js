@@ -3,11 +3,11 @@ angular.module('starter.controllers', [])
 	//alert($rootScope.IOS);
 	$ionicPlatform.ready(function() {
 		$scope.IOS = ionic.Platform.isIOS();
-		alert($scope.IOS)
 		$scope.Android = ionic.Platform.isAndroid();
+		alert($scope.IOS+","+$scope.Android)
 		if($scope.IOS==true){
-			$scope.layout='style'
-		}else{
+			$scope.layout='style-ios'
+		}else if($scope.Android==true){
 			$scope.layout='style-android'
 		}
 	})
