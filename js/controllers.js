@@ -4,7 +4,7 @@ angular.module('starter.controllers', [])
 	$ionicPlatform.ready(function() {
 		$scope.IOS = ionic.Platform.isIOS();
 		$scope.Android = ionic.Platform.isAndroid();
-		alert($scope.IOS+","+$scope.Android)
+		//alert($scope.IOS+","+$scope.Android)
 		if($scope.IOS==true){
 			$scope.layout='style-ios'
 		}else if($scope.Android==true){
