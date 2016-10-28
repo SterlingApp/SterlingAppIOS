@@ -1,4 +1,17 @@
 angular.module('starter.controllers', [])
+.controller('mainController', function($scope,$ionicPlatform) {
+	//alert($rootScope.IOS);
+	$ionicPlatform.ready(function() {
+		$scope.IOS = ionic.Platform.isIOS();
+		alert($scope.IOS)
+		$scope.Android = ionic.Platform.isAndroid();
+		if($scope.IOS==true){
+			$scope.layout='style'
+		}else{
+			$scope.layout='style-android'
+		}
+	})
+})
 .controller('loginCtrl', function($scope,$timeout,$cordovaNetwork,$cordovaDialogs,$location,$ionicLoading,$ionicPopup,$ionicTabsDelegate,$http,$rootScope) {
 	// alert();
 	$scope.loginData={username:'',password:''};
