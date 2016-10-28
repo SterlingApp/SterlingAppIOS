@@ -40,20 +40,12 @@
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
   <icon src="SterlingIcon.png"/>
-  <platform name="android">
-    <splash src="splash/drawable-port-ldpi-screen.png" density="port-ldpi"/>
-    <splash src="splash/drawable-port-mdpi-screen.png" density="port-mdpi"/>
-    <splash src="splash/drawable-port-hdpi-screen.png" density="port-hdpi"/>
-    <splash src="splash/drawable-port-xhdpi-screen.png" density="port-xhdpi"/>
-    <splash src="splash/drawable-port-xxhdpi-screen.png" density="port-xxhdpi"/>
-    <splash src="splash/drawable-port-xxxhdpi-screen.png" density="port-xxxhdpi"/>
-  </platform>
-  <platform name="ios">
-	<splash src="splash/drawable-port-ldpi-screen.png" density="port-ldpi"/>
-    <splash src="splash/drawable-port-mdpi-screen.png" density="port-mdpi"/>
-    <splash src="splash/drawable-port-hdpi-screen.png" density="port-hdpi"/>
-    <splash src="splash/drawable-port-xhdpi-screen.png" density="port-xhdpi"/>
-    <splash src="splash/drawable-port-xxhdpi-screen.png" density="port-xxhdpi"/>
-    <splash src="splash/drawable-port-xxxhdpi-screen.png" density="port-xxxhdpi"/>
-  </platform>
+  <splash src="splash/drawable-port-ldpi-screen.png" density="port-ldpi"/>
+  <splash src="splash/drawable-port-mdpi-screen.png" density="port-mdpi"/>
+  <splash src="splash/drawable-port-hdpi-screen.png" density="port-hdpi"/>
+  <splash src="splash/drawable-port-xhdpi-screen.png" density="port-xhdpi"/>
+  <splash src="splash/drawable-port-xxhdpi-screen.png" density="port-xxhdpi"/>
+  <splash src="splash/drawable-port-xxxhdpi-screen.png" density="port-xxxhdpi"/>
+  <platform name="android" />
+  <platform name="ios" />
 </widget>
