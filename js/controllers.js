@@ -4529,7 +4529,7 @@ $scope.toggleCobra = function(){
 			}
 		  
 		});
-  }, 7000);
+  }, 10000);
 	   
 	  
   }
