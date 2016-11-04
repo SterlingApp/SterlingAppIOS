@@ -458,9 +458,15 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
 
   .state('cobraaccount', {
     url: "/cobraaccount",
-    
         templateUrl: "templates/cobra/cobraaccount.html",
 		 controller: 'CobraaccountCtrl'
+      
+  })
+  .state('cobrapayment', {
+	cache:false,
+    url: "/cobrapayment",
+        templateUrl: "templates/cobra/cobrapayment.html",
+		 controller: 'CobraPaymentCtrl'
       
   });
   $urlRouterProvider.otherwise('/login');
