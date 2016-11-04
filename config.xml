@@ -1,6 +1,6 @@
-<?xml version="1.1" encoding="UTF-8" standalone="yes"?>
-<widget id="com.sterlingIos.admin" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>Sterling IOS</name>
+<?xml version="1.8" encoding="UTF-8" standalone="yes"?>
+<widget id="com.sterling.admin" version="1.0.8" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>Sterling Administration</name>
   <description>
         Sterling Administration  App for HSA,FSA,HRA and COBRA
     </description>
