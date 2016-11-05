@@ -7,7 +7,6 @@
 	</div>
 </ion-header-bar>
 
-
 <ion-view>
 	<ion-content class="bgnew">
 		<div class="card">
@@ -80,35 +79,30 @@
 		                       <span style="color:red" ng-show="myForm.feeamount.$dirty && myForm.feeamount.$invalid">
                                 <span ng-show="myForm.feeamount.$error.required"> Fee Amount is required.</span>
                               </span>
-							</div>
+						</div>
 						 
-							 <label class="item item-input item-floating-label formselect"  ng-class="{ 'has-errors' :myForm.transaction.$dirty && myForm.transaction.$invalid ,'no-errors':myForm.transaction.$valid }">
-                             <span class="input-label ItemlineHead1 ">
-                               Enter Transaction
-	                           </span>
-                             <input type="text"  ng-focus="getTransDate()" name="transaction" ng-model="makecontribute.TransDate" class="bgnew" id="forminput " placeholder="Transaction Date" ng-readonly="true" required>
-                            
-		                          </label>
-							<div class="row">
-							  <span style="color:red" ng-show="myForm.transaction.$dirty && myForm.transaction.$invalid">
-                                <span ng-show="myForm.transaction.$error.required"> Transaction Date is required.</span>
-                              </span>
-							</div>
+						<label class="item item-input item-floating-label formselect"  ng-class="{ 'has-errors' :myForm.transaction.$dirty && myForm.transaction.$invalid ,'no-errors':myForm.transaction.$valid }">
+						 <span class="input-label ItemlineHead1 ">
+						   Enter Transaction
+						   </span>
+						 <input type="text"  ng-focus="getTransDate()" name="transaction" ng-model="makecontribute.TransDate" class="bgnew" id="forminput " placeholder="Transaction Date" ng-readonly="true" required>
+		                </label>
 							
-							
-						
-						
+						<div class="row">
+						  <span style="color:red" ng-show="myForm.transaction.$dirty && myForm.transaction.$invalid">
+							<span ng-show="myForm.transaction.$error.required"> Transaction Date is required.</span>
+						  </span>
+						</div>
+												
 						<p class=" ItemlineHead1 Select-Float" ng-show="floatlabel1">Select Description</p>
 						<label class="item item-input item-select formselect bgnew" ng-class="{ 'has-errors' :myForm.selectdescription.$dirty && myForm.selectdescription.$invalid ,'no-errors' :myForm.selectdescription.$valid }" >
 							<span class="input-label">
 							Description
 							</span>
 							<select class="bgnew" name="selectdescription" ng-model="makecontribute.selectdescription" ng-change="SelectFloat1()" required>
-							<option value="" > Select Description</option>
-							<option ng-repeat="data in description">{{data.FEE_NAME}}</option>
-
+								<option value="" > Select Description</option>
+								<option ng-repeat="data in description">{{data.FEE_NAME}}</option>
 							</select>
-						<!-- <input type="text"  name="description" ng-model="makecontribute.description" class="input-box input-boxfocus " id="forminput" placeholder="Description" required> -->
 						</label>
 						
 						<div class="row">
@@ -117,7 +111,6 @@
 							</span>
 						</div>
 					</div>
-					
 					<div class="row">
 						<div class="col  text-center">
 							<button class="button button-calm button-small formButton1" type="submit" ng-click="submitvalues();myForm.$setPristine()" ng-disabled="myForm.$invalid || myForm.feeamount.$invalid" style="background-color:#29B8E5;color:#fff;border-radius:8px;">SUBMIT</button>
@@ -126,6 +119,5 @@
 				</div>
 			</div>
 		</form>	
-
 	</ion-content>
 </ion-view>
