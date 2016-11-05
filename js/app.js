@@ -40,6 +40,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
 		templateUrl: 'templates/contact.html',
 		controller: 'contactCtrl'
 	})
+	
 	// HSA
 	.state('app.hsa', {
 		url: "/hsa",
