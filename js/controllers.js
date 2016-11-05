@@ -62,59 +62,119 @@ angular.module('starter.controllers', [])
 		}
 	}
 })
-.controller('HsaCtrl', function($scope,$rootScope,$cordovaNetwork,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$ionicHistory,$ionicTabsDelegate) {
-	localStorage.setItem("backCount","2");
-	$scope.username = localStorage.getItem('username');
-	$scope.access_token = localStorage.getItem('access_token');
+// .controller('HsaCtrl', function($scope,$rootScope,$cordovaNetwork,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$ionicHistory,$ionicTabsDelegate) {
+	// localStorage.setItem("backCount","2");
+	// $scope.username = localStorage.getItem('username');
+	// $scope.access_token = localStorage.getItem('access_token');
 	
-    $http.get('http://app.sterlinghsa.com/api/v1/accounts/portfolio',{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
-	    .success(function(data){
-			$rootScope.acctype=data.account_types;
-			$rootScope.cobrassn=data.account_types.COBRA.SSN;
-		    if(data.account_types.HSA!=undefined){
-				localStorage.setItem('account_types',data.account_types.HSA);
-				$scope.account_type=data.account_types.HSA;
-				$rootScope.hsaaccno=data.account_types.HSA.ACCT_NUM;
-				$rootScope.hsaaccId=data.account_types.HSA.ACCT_ID;
-			}else if(data.account_types.FSA!=undefined){
-				localStorage.setItem('account_types',data.account_types.FSA);
-				$scope.account_types=data.account_types.FSA;
-				$rootScope.fsaaccno=data.account_types.FSA.ACCT_NUM;
-				$rootScope.fsaaccId=data.account_types.FSA.ACCT_ID;
-			}else if(data.account_types.HRA!=undefined){
-				localStorage.setItem('account_types',data.account_types.HRA);
-				$scope.account_types=data.account_types.HRA;
-				$rootScope.hraaccno=data.account_types.HRA.ACCT_NUM; 
-				$rootScope.hraaccId=data.account_types.HRA.ACCT_ID;
-			}else if(data.account_types.COBRA!=undefined){
-				localStorage.setItem('account_types',data.account_types.COBRA);
-				$scope.account_types=data.account_types.COBRA;
-				$rootScope.hraaccno=data.account_types.COBRA.ACCT_NUM; 
-				$rootScope.hraaccId=data.account_types.COBRA.ACCT_ID;
-				$rootScope.cobrassn=data.account_types.COBRA.SSN;
-			}
-		});
-	$http.get(' http://app.sterlinghsa.com/api/v1/accounts/accountinfo',{params:{'type':'hsa','acc_num': data.account_types.HSA.ACCT_NUM},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
-	.success(function(data){
-		$scope.contributions=data.total_contributions.CURRENT_YR_CONTRB;
-	}).error(function(err){
-		$ionicLoading.hide();
-		$cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
-		.then(function(buttonIndex) {
-			if(buttonIndex=="1")
-			{
-				localStorage.clear();
-				window.location='login.html#/login';
-			}
-		});
-		return false;
-	});
-	$scope.goForward = function () {
-		var selected = $ionicTabsDelegate.selectedIndex();
-		if (selected != -1) {
-			$ionicTabsDelegate.select(selected + 1);
-		}
-	}
+    // $http.get('http://app.sterlinghsa.com/api/v1/accounts/portfolio',{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
+	    // .success(function(data){
+			// $rootScope.acctype=data.account_types;
+			// $rootScope.cobrassn=data.account_types.COBRA.SSN;
+		    // if(data.account_types.HSA!=undefined){
+				// localStorage.setItem('account_types',data.account_types.HSA);
+				// $scope.account_type=data.account_types.HSA;
+				// $rootScope.hsaaccno=data.account_types.HSA.ACCT_NUM;
+				// $rootScope.hsaaccId=data.account_types.HSA.ACCT_ID;
+			// }else if(data.account_types.FSA!=undefined){
+				// localStorage.setItem('account_types',data.account_types.FSA);
+				// $scope.account_types=data.account_types.FSA;
+				// $rootScope.fsaaccno=data.account_types.FSA.ACCT_NUM;
+				// $rootScope.fsaaccId=data.account_types.FSA.ACCT_ID;
+			// }else if(data.account_types.HRA!=undefined){
+				// localStorage.setItem('account_types',data.account_types.HRA);
+				// $scope.account_types=data.account_types.HRA;
+				// $rootScope.hraaccno=data.account_types.HRA.ACCT_NUM; 
+				// $rootScope.hraaccId=data.account_types.HRA.ACCT_ID;
+			// }else if(data.account_types.COBRA!=undefined){
+				// localStorage.setItem('account_types',data.account_types.COBRA);
+				// $scope.account_types=data.account_types.COBRA;
+				// $rootScope.hraaccno=data.account_types.COBRA.ACCT_NUM; 
+				// $rootScope.hraaccId=data.account_types.COBRA.ACCT_ID;
+				// $rootScope.cobrassn=data.account_types.COBRA.SSN;
+			// }
+		// });
+	// $http.get(' http://app.sterlinghsa.com/api/v1/accounts/accountinfo',{params:{'type':'hsa','acc_num': data.account_types.HSA.ACCT_NUM},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
+	// .success(function(data){
+		// $scope.contributions=data.total_contributions.CURRENT_YR_CONTRB;
+	// }).error(function(err){
+		// $ionicLoading.hide();
+		// $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+		// .then(function(buttonIndex) {
+			// if(buttonIndex=="1")
+			// {
+				// localStorage.clear();
+				// window.location='login.html#/login';
+			// }
+		// });
+		// return false;
+	// });
+	// $scope.goForward = function () {
+		// var selected = $ionicTabsDelegate.selectedIndex();
+		// if (selected != -1) {
+			// $ionicTabsDelegate.select(selected + 1);
+		// }
+	// }
+// })
+
+.controller('HsaCtrl', function($scope,$rootScope,$cordovaNetwork,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$ionicHistory,$ionicTabsDelegate) {
+ 
+ $scope.goForward = function () {
+  
+        var selected = $ionicTabsDelegate.selectedIndex();
+        if (selected != -1) {
+            $ionicTabsDelegate.select(selected + 1);
+        }
+    }
+    
+ localStorage.setItem("backCount","2");
+ $scope.username = localStorage.getItem('username');
+ $scope.access_token = localStorage.getItem('access_token');
+  $http.get('http://app.sterlinghsa.com/api/v1/accounts/portfolio',{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
+     .success(function(data){
+    $rootScope.acctype=data.account_types;
+    $rootScope.cobrassn=data.account_types.COBRA.SSN;
+    if(data.account_types.HSA!=undefined){
+     localStorage.setItem('account_types',data.account_types.HSA);
+     $scope.account_type=data.account_types.HSA;
+     $rootScope.hsaaccno=data.account_types.HSA.ACCT_NUM;
+     $rootScope.hsaaccId=data.account_types.HSA.ACCT_ID;
+    }else if(data.account_types.FSA!=undefined){
+     localStorage.setItem('account_types',data.account_types.FSA);
+     $scope.account_types=data.account_types.FSA;
+     $rootScope.fsaaccno=data.account_types.FSA.ACCT_NUM;
+     $rootScope.fsaaccId=data.account_types.FSA.ACCT_ID;
+    }else if(data.account_types.HRA!=undefined){
+     localStorage.setItem('account_types',data.account_types.HRA);
+     $scope.account_types=data.account_types.HRA;
+     $rootScope.hraaccno=data.account_types.HRA.ACCT_NUM; 
+     $rootScope.hraaccId=data.account_types.HRA.ACCT_ID;
+    }else if(data.account_types.COBRA!=undefined){
+     localStorage.setItem('account_types',data.account_types.COBRA);
+     $scope.account_types=data.account_types.COBRA;
+     $rootScope.hraaccno=data.account_types.COBRA.ACCT_NUM; 
+     $rootScope.hraaccId=data.account_types.COBRA.ACCT_ID;
+     $rootScope.cobrassn=data.account_types.COBRA.SSN;
+    }
+    
+     $http.get(' http://app.sterlinghsa.com/api/v1/accounts/accountinfo',{params:{'type':'hsa','acc_num': data.account_types.HSA.ACCT_NUM},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
+     .success(function(data){
+      $scope.contributions=data.total_contributions.CURRENT_YR_CONTRB;
+     }).error(function(err){
+      
+     });
+      }).error(function(err){
+     $ionicLoading.hide();
+     $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+     .then(function(buttonIndex) {
+      if(buttonIndex=="1")
+      {
+       localStorage.clear();
+       window.location='login.html#/login';
+      }
+     });
+     return false;
+   });
 })
 .controller('FsaCtrl', function($scope,$rootScope,$cordovaNetwork,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$ionicTabsDelegate,$ionicSideMenuDelegate) {
 	localStorage.setItem("backCount","2");
@@ -1306,56 +1366,30 @@ angular.module('starter.controllers', [])
 	$rootScope.hidecontent=true;
 	localStorage.setItem("backCount","4");
 	$scope.username = localStorage.getItem('username');
-	 $scope.access_token = localStorage.getItem('access_token');
-	  $scope.date=$scope.activity;
-	 $scope.summary= $rootScope.summary_list;
-	 $scope.activity_list=$rootScope.activity_list;
-	
-	
-	
+	$scope.access_token = localStorage.getItem('access_token');
+	$scope.date=$scope.activity;
+	$scope.summary= $rootScope.summary_list;
+	$scope.activity_list=$rootScope.activity_list;
+
 	$scope.goback=function()
 	{
 		$rootScope.hidecontent=false;
-		//window.history.back();
 		$location.path("/activitystmnt")
 	}
-	
+
 })
-// .controller('HsastateCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope) {
-	// $rootScope.hidecontent=true;
-	// localStorage.setItem("backCount","4");
-	
-	 // $scope.username = localStorage.getItem('username');
-	 // $scope.access_token = localStorage.getItem('access_token');
-	  // $scope.date=$scope.activity;
-	 
-	// $scope.summary= $rootScope.summary_list;
-	 // $scope.activity=$rootScope.activity_list;
-	 // alert(JSON.stringify( $scope.activity));
-	
-	
-	// $scope.goback=function()
-	// {
-		// //$rootScope.hidecontent=false;
-		// window.history.back();
-		// //$location.path("/hsa")
-	// }
-	
-// })
+
 .controller('statementCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope) {
 	$rootScope.hidecontent=true;
 	localStorage.setItem("backCount","4");
-	  $scope.date=$scope.activity;
-	
+	$scope.date=$scope.activity;
+
 	$scope.goback=function()
 	{
 		$rootScope.hidecontent=false;
 		window.history.back();
-		//$location.path("/hsa")
 	}
 })
-
-
 .controller('ActivitystmntCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope,$filter) {
 	$rootScope.hidecontent=true;
 	localStorage.setItem("backCount","4");
@@ -1365,203 +1399,113 @@ angular.module('starter.controllers', [])
 	$scope.username = localStorage.getItem('username');
 	$scope.access_token = localStorage.getItem('access_token');
 	$scope.date = $filter('date')(new Date(),'MM/dd/yyyy');
-	// alert(JSON.stringify($scope.date));
 	
 	$scope.pick=function(){	
-	
-		// var data=$scope.activity;
+
 		if($scope.activity.EndtDate=="" || $scope.activity.startDate ==""){
 			$cordovaDialogs.confirm('Please select date', 'Sorry', 'ok')
-     .then(function(buttonIndex)
-	 {
-	 if(buttonIndex=="1")
-	  {
-				localStorage.clear();
-				$location.path('activitystmnt');
-	  }
-     });
-			
+			.then(function(buttonIndex)
+			{
+				if(buttonIndex=="1")
+				{
+					localStorage.clear();
+					$location.path('activitystmnt');
+				}
+			});
+
 		}	
 		else if($scope.activity.startDate >$scope.date){
 			$cordovaDialogs.confirm('Cannot select future date in From date', 'Sorry', 'ok')
-     .then(function(buttonIndex)
-	 {
-	 if(buttonIndex=="1")
-	  {
+			.then(function(buttonIndex)
+			{
+			if(buttonIndex=="1")
+			{
 				localStorage.clear();
 				$location.path('activitystmnt');
-	  }
-     });
-			
+			}
+			});
+
 		}
 		else{
 			$ionicLoading.show({
-		  template: '<ion-spinner icon="ios"></ion-spinner><br>Loading...'
-		});
+			template: '<ion-spinner icon="ios"></ion-spinner><br>Loading...'
+			});
 			$http.post('http://app.sterlinghsa.com/api/v1/accounts/activitystatement',{fromdate:$rootScope.activity.startDate,todate:$rootScope.activity.EndtDate, 'account':$rootScope.hsaaccno },{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
-	.success(function(data){
-		
-		//alert(JSON.stringify(data));
-		$rootScope.summary_list=data.summary_list;
-		$rootScope.activity_list=data.activity_list;
-		//alert(JSON.stringify($rootScope.summary_list));
-		//alert(JSON.stringify($rootScope.activity_list));
-			$ionicLoading.hide();
-			$location.path("hsastatement");
-		$scope.activity={};
-		
-	}).error(function(err){
-			alert(JSON.stringify(err));
-		});
+			.success(function(data){
+				$rootScope.summary_list=data.summary_list;
+				$rootScope.activity_list=data.activity_list;
+				$ionicLoading.hide();
+				$location.path("hsastatement");
+				$scope.activity={};
+
+			}).error(function(err){
+			
+			});
 		}
-		
-		
 	};
-	
+
 
 	$scope.getStartDate=function(){
 		var today = new Date();
-        var _minDate = new Date();
-        _minDate.setMonth(today.getMonth() -1000);
+		var _minDate = new Date();
+		_minDate.setMonth(today.getMonth() -1000);
+		var mindate = ionic.Platform.isIOS() ? new Date(_minDate.getFullYear(), _minDate.getMonth(), _minDate.getDay()) :
+		(new Date(_minDate.getFullYear(), _minDate.getMonth(), _minDate.getDay())).valueOf();
+		var maxDate = ionic.Platform.isIOS() ? new Date() : (new Date()).valueOf();
 
-        var mindate = ionic.Platform.isIOS() ? new Date(_minDate.getFullYear(), _minDate.getMonth(), _minDate.getDay()) :
-        (new Date(_minDate.getFullYear(), _minDate.getMonth(), _minDate.getDay())).valueOf();
-        var maxDate = ionic.Platform.isIOS() ? new Date() : (new Date()).valueOf();
+		$cordovaDatePicker.show({date: today,minDate: mindate,maxDate: maxDate}).then
+		(function(date)
+		{
+			var date1=date.toString();
+			var dataas=date1.split(" ");
+			var Month = ["App","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+			var mon=""; 
+			if(Month.indexOf(dataas[1]).toString().length==1)
+			{
+				mon="0"+Month.indexOf(dataas[1]);
+			}
+			else
+			{
+				mon = Month.indexOf(dataas[1]);
+			}
+			var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
+			$scope.activity.startDate=selectedDate;
 
-       $cordovaDatePicker.show({date: today,minDate: mindate,maxDate: maxDate}).then
-	   (function(date)
-	   {
-         var date1=date.toString();
-		 var dataas=date1.split(" ");
-		 var Month = ["App","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-					//var mon = Month.indexOf(dataas[1]); 
-		 var mon=""; 
-		 if(Month.indexOf(dataas[1]).toString().length==1)
-		 {
-			mon="0"+Month.indexOf(dataas[1]);
-
-		 }
-		 else
-	     {
-		   mon = Month.indexOf(dataas[1]);
-		 }
-					//var selectedDate=dataas[3]+'/'+mon+'/'+dataas[2];
-				
-		 var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
-		 $scope.activity.startDate=selectedDate;
-	
-    });
-  
-
-		
+		});
 	};
 	$scope.getEndDate=function(){
 		var today = new Date();
-		 // var _minDate = new Date();
-        // _minDate.setMonth(today.getMonth() +10);
-        var _maxDate = new Date();
-        _maxDate.setMonth(today.getMonth()+900);
+		var _maxDate = new Date();
+		_maxDate.setMonth(today.getMonth()+900);
 
-        var maxdate = ionic.Platform.isIOS() ? new Date(_maxDate.getFullYear(),_maxDate.getMonth(),_maxDate.getDay()) :
-        (new Date(_maxDate.getFullYear(), _maxDate.getMonth(), _maxDate.getDay())).valueOf();
-        var minDate = ionic.Platform.isIOS() ? new Date() : (new Date()).valueOf();
+		var maxdate = ionic.Platform.isIOS() ? new Date(_maxDate.getFullYear(),_maxDate.getMonth(),_maxDate.getDay()) :
+		(new Date(_maxDate.getFullYear(), _maxDate.getMonth(), _maxDate.getDay())).valueOf();
+		var minDate = ionic.Platform.isIOS() ? new Date() : (new Date()).valueOf();
 
-       $cordovaDatePicker.show({date: today,minDate: minDate,maxDate: maxdate, mode: 'date'}).then
-	   (function(date)
-	   {
-         var date1=date.toString();
-		 var dataas=date1.split(" ");
-		 var Month = ["App","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-					//var mon = Month.indexOf(dataas[1]); 
-		 var mon=""; 
-		 if(Month.indexOf(dataas[1]).toString().length==1)
-		 {
-			mon="0"+Month.indexOf(dataas[1]);
+		$cordovaDatePicker.show({date: today,minDate: minDate,maxDate: maxdate, mode: 'date'}).then
+		(function(date)
+		{
+			var date1=date.toString();
+			var dataas=date1.split(" ");
+			var Month = ["App","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+			var mon=""; 
+			if(Month.indexOf(dataas[1]).toString().length==1)
+			{
+				mon="0"+Month.indexOf(dataas[1]);
+			}
+			else
+			{
+				mon = Month.indexOf(dataas[1]);
+			}
+			var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
+			$scope.activity.EndtDate=selectedDate;
+		});
 
-		 }
-		 else
-	     {
-		   mon = Month.indexOf(dataas[1]);
-		 }
-					//var selectedDate=dataas[3]+'/'+mon+'/'+dataas[2];
-				
-		 var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
-		 $scope.activity.EndtDate=selectedDate;
-	
-    });
-  
-		}
-		// var today = new Date();
-		 // var _minDate = new Date();
-        // _minDate.setMonth(today.getMonth() +10);
+	}
 
-		// var _maxDate = new Date();
-         // _maxDate.setMonth(today.getMonth() +10);
- 
- 
-   
-     // var maxdate = ionic.Platform.isIOS() ? new Date(_maxDate.getFullYear(), _maxDate.getMonth(), _maxDate.getDay()) : (new Date(_maxDate.getFullYear(), _maxDate.getMonth(), _maxDate.getDay())).valueOf();
-	  // var minDate = ionic.Platform.isIOS() ? new Date() :
-      // (new Date()).valueOf();
-      
-	     // $cordovaDatePicker.show({
-      // date: today,maxDate: maxdate,
-      // minDate: minDate
-	  
-    // }).then(function (date) {
-       // var date1=date.toString();
-					// var dataas=date1.split(" ");
-					// var Month = ["App","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-					
-					// var mon=""; 
-					// if(Month.indexOf(dataas[1]).toString().length==1)
-					// {
-						// mon="0"+Month.indexOf(dataas[1]);
-
-					// }
-					// else
-					// {
-						// mon = Month.indexOf(dataas[1]);
-					// }
-					
-				
-					// var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
-					// $scope.activity.EndtDate=selectedDate;
-	
-    // });
-		
-	// };
-	// $scope.pick=function(){
-		// // var data=$scope.activity;
-		// if($scope.activity.EndtDate==""|| $scope.activity.startDate==""){
-			// alert('Please select date');
-		// }else{
-			
-				// $http.post('  http://app.sterlinghsa.com/api/v1/accounts/activitystatement',{'fromdate':$scope.activity.startDate,'todate':$scope.activity.EndtDate, 'account':$rootScope.hsaaccno },{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
-				// .success(function(data){
-					
-					// //alert(JSON.stringify(data));
-					// $scope.activityStatement=data;
-					// //$scope.categories=data.categories;
-				// }).error(function(err){
-			   // //alert(JSON.stringify(err));
-			  // });
-			  // $location.path("hsastatement");
-			
-		// }
-		
-		
-	// };
-
-	
-	
- 
-	
-	
 	$scope.goback=function()
 	{
 		$rootScope.hidecontent=true;
-		//window.history.back();
 		$scope.activity={};
 		$location.path("app/hsa");
 		
@@ -1569,32 +1513,25 @@ angular.module('starter.controllers', [])
 })
  
  .controller('ContributionCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope) {
-		$rootScope.hidecontent=true;
-		$scope.back=function(){
-			
-			window.history.back();
-            window.history.reload();
-		}
+	$rootScope.hidecontent=true;
 	localStorage.setItem("backCount","4");
-	
+
 	$scope.goback=function()
 	{
 		$rootScope.hidecontent=false;
 		window.history.back();
-		//$location.path("/hsa")
 	}
 })
 
 .controller('statementCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope) {
 	$rootScope.hidecontent=true;
 	localStorage.setItem("backCount","4");
-	  $scope.date=$scope.activity;
-	
+	$scope.date=$scope.activity;
+
 	$scope.goback=function()
 	{
 		$rootScope.hidecontent=false;
 		window.history.back();
-		//$location.path("/hsa")
 	}
 })
 
@@ -1615,12 +1552,10 @@ angular.module('starter.controllers', [])
 	}
 	$scope.SelectFloat1 = function ()
 	{ 
-	
 		$scope.floatlabel1=true;
- 
 	}
 	
-	 // $scope.ds=true;
+	
 	$scope.upload = function(){
 		$cordovaDialogs.confirm('Choose your option', 'Upload Receipt', ['Camera','Gallery'])
 		.then(function(options) {
@@ -1653,10 +1588,8 @@ angular.module('starter.controllers', [])
 				};
 				
 				$cordovaCamera.getPicture(options).then(function(imageData) {
-				   $scope.imgSrc= imageData;
-				// $scope.imgSrc.push(imageData);
-             
-				  // alert(JSON.stringify( $scope.imgSrc.push(imageData)));
+					$scope.imgSrc= imageData;
+				
 				}, function(err) {
 				});
 			}
@@ -1664,221 +1597,137 @@ angular.module('starter.controllers', [])
 		return false;
 	}
 	
-	// $scope.deleteimg=function($index){
-		
-		// $scope.imgSrc.splice($index,1)
-	// }
 	
-	 $scope.TransDate="";
+	
+	$scope.TransDate="";
 	$scope.getTransDate=function(){
-		
-		 var options = {
-				date: new Date(),
-				mode: 'date', // or 'time'
-				minDate: new Date(),
-				
-			}
-		   
-			 $ionicPlatform.ready(function(){
-				 $cordovaDatePicker.show(options).then(function(date){
-					
-					var date1=date.toString();
-					var dataas=date1.split(" ");
-					var Month = ["App","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-					
-					var mon=""; 
-					if(Month.indexOf(dataas[1]).toString().length==1)
-					{
-						mon="0"+Month.indexOf(dataas[1]);
 
-					}
-					else
-					{
-						mon = Month.indexOf(dataas[1]);
-					}
-					
-				
-					var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
-					$scope.paymeValues.TransDate=selectedDate;
-				});
-			 })
-		
+		var options = {
+			date: new Date(),
+			mode: 'date', // or 'time'
+			minDate: new Date(),
+
+		}
+	$ionicPlatform.ready(function(){
+		$cordovaDatePicker.show(options).then(function(date){
+
+			var date1=date.toString();
+			var dataas=date1.split(" ");
+			var Month = ["App","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+			var mon=""; 
+			if(Month.indexOf(dataas[1]).toString().length==1)
+			{
+				mon="0"+Month.indexOf(dataas[1]);
+			}
+			else
+			{
+				mon = Month.indexOf(dataas[1]);
+			}
+			var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
+			$scope.paymeValues.TransDate=selectedDate;
+		});
+		})
+
 	};
 	 	
 	if($cordovaNetwork.isOffline())
- {
-   $ionicLoading.hide();
-   $cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
-   .then(function() {
-   });
-   return false;
- }else{
-   $http.get("http://app.sterlinghsa.com/api/v1/accounts/bankdetails",{params:{'type':'hsa', 'acc_num':$scope.hsaaccno},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
-	.success(function(data){
-		//alert( JSON.stringify(data));
-		
-		$scope.bank_details=data.bank_details;
-   
-   
-  }).error(function(err){
-   $ionicLoading.hide();
-  $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function(buttonIndex) {
-	   if(buttonIndex=="1")
-			{
-				localStorage.clear();
-				window.location='login.html#/login';
-			}
-   });
-   return false;
-   
-  });
- }
-	 // $http.get("http://app.sterlinghsa.com/api/v1/accounts/bankdetails",{params:{'type':'hsa', 'acc_num':$scope.hsaaccno},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
-	 // .success(function(data){
-		// alert( JSON.stringify(data));
-		
-		 // $scope.bank_details=data.bank_details;
-	// }, function(err){
-		// // //alert("ERROR: " + JSON.stringify(err));
-		
-	 // });
-	
+	{
+		$ionicLoading.hide();
+		$cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
+		.then(function() {
+		});
+		return false;
+	}else{
+		$http.get("http://app.sterlinghsa.com/api/v1/accounts/bankdetails",{params:{'type':'hsa', 'acc_num':$scope.hsaaccno},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
+		.success(function(data){
+			$scope.bank_details=data.bank_details;
+		}).error(function(err){
+			$ionicLoading.hide();
+			$cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+			.then(function(buttonIndex) {
+				if(buttonIndex=="1")
+				{
+					localStorage.clear();
+					window.location='login.html#/login';
+				}
+			});
+			return false;
+
+		});
+	}
+	 
 	$http.get('  http://app.sterlinghsa.com/api/v1/accounts/categories',{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
 	.success(function(data){
-		//alert(JSON.stringify(data));
-		
 		$scope.categories=data.categories;
-		//alert(JSON.stringify($scope.categories));
-	}).error(function(err){
-   
-  });
+		}).error(function(err){
+    });
  
- 
- 
-	
 	$http.get(" http://app.sterlinghsa.com/api/v1/accounts/balances",{params:{'type':'hsa'},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
 	.success(function(data){
-		//alert( JSON.stringify(data));
-		
 		$scope.Availablebalance=data.balances.BALANCE;
 	}).error(function(err){
-   
-  });
+
+	});
   
  
 
  
 				 
 	$scope.payme=function(myForm){
-		//alert();
-		
-		
-	if($scope.paymeValues.amount == 0){
-		
-		$cordovaDialogs.alert('Please enter the amount greater than 0','Sorry','OK')
+		if($scope.paymeValues.amount == 0){
+			$cordovaDialogs.alert('Please enter the amount greater than 0','Sorry','OK')
 			.then(function() {
-				// $scope.paymeValues.amount={};
-				
-				
-		});
-		
-	}
-	else {	
-	
-	   $ionicLoading.show({
-		  template: '<ion-spinner icon="ios"></ion-spinner><br>Loading...'
-		});
-	
-	$http.post("http://app.sterlinghsa.com/api/v1/accounts/payme",{'hsa_acct_id': $scope.hsaaccId,'bank_acct_id':$scope.paymeValues.selectAccount.BANK_ACC_ID,'amount':$scope.paymeValues.amount,'category':$scope.paymeValues.category.LOOKUP_CODE,'trans_date':$scope.paymeValues.TransDate,"receipt":document.getElementsByName('imgValue')[0].value},{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
-	.success(function(data){
-		//alert( JSON.stringify(data));
-		
-		if(data.status == "SUCCESS"){
-			$ionicLoading.hide();
-			$scope.transactionid = data.transaction_id;
-			$cordovaDialogs.alert('Please reference this Disbursement number'+ " " + $scope.transactionid +" "+'for further communication.', 'Disbursement Submitted Successfully', 'OK')
-			.then(function() {
-				$scope.imgSrc= '';
-				var myEl = angular.element( document.querySelector( '#receipt' ) );
-				myEl.removeAttr('src');
-				 $scope.paymeValues={};
-				 $scope.floatlabel=false;
-				$scope.floatlabel1=false;
-				
-				
-		});
-		return false;
-		}else if(data.status == "FAILED"){
-			 $ionicLoading.hide();
-			
-			$cordovaDialogs.alert(data.error_message, 'Sorry', 'OK')
-			.then(function($setUntouched,$setPristine) {
-				
-				     	// $scope.myForm.$setPristine();
-                     // $scope.ds=false;
-                     	$scope.imgSrc= '';
+			});
+		}
+		else {	
+			$ionicLoading.show({
+			template: '<ion-spinner icon="ios"></ion-spinner><br>Loading...'
+			});
+
+			$http.post("http://app.sterlinghsa.com/api/v1/accounts/payme",{'hsa_acct_id': $scope.hsaaccId,'bank_acct_id':$scope.paymeValues.selectAccount.BANK_ACC_ID,'amount':$scope.paymeValues.amount,'category':$scope.paymeValues.category.LOOKUP_CODE,'trans_date':$scope.paymeValues.TransDate,"receipt":document.getElementsByName('imgValue')[0].value},{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
+			.success(function(data){
+				if(data.status == "SUCCESS"){
+					$ionicLoading.hide();
+					$scope.transactionid = data.transaction_id;
+					$cordovaDialogs.alert('Please reference this Disbursement number'+ " " + $scope.transactionid +" "+'for further communication.', 'Disbursement Submitted Successfully', 'OK')
+					.then(function() {
+						$scope.imgSrc= '';
 						var myEl = angular.element( document.querySelector( '#receipt' ) );
 						myEl.removeAttr('src');
-				     	 $scope.paymeValues={};
-						 $scope.floatlabel=false;
+						$scope.paymeValues={};
+						$scope.floatlabel=false;
 						$scope.floatlabel1=false;
-					 		 
-			    
-		});
-		return false;
-		
+						
+					});
+					return false;
+				}else if(data.status == "FAILED"){
+					$ionicLoading.hide();
+					$cordovaDialogs.alert(data.error_message, 'Sorry', 'OK')
+					.then(function($setUntouched,$setPristine) {
+						$scope.imgSrc= '';
+						var myEl = angular.element( document.querySelector( '#receipt' ) );
+						myEl.removeAttr('src');
+						$scope.paymeValues={};
+						$scope.floatlabel=false;
+						$scope.floatlabel1=false;
+						
+					});
+					return false;
+
+				}
+			}).error(function(err){
+			});
 		}
-		//$scope.Availablebalance=data.balances.BALANCE;
-	}).error(function(err){
-  //alert( JSON.stringify(err));
-  });
+
 	}
-		   
-}
-$scope.payme2=function(myForm){
-		// alert();
-		$ionicLoading.show({
-		  template: '<ion-spinner icon="ios"></ion-spinner><br>Loading...'
-		});
-		$http.post("http://app.sterlinghsa.com/api/v1/accounts/payme",{'hsa_acct_id': $scope.hsaaccId,'bank_acct_id':$scope.paymeValues.selectAccount.BANK_ACC_ID,'amount':$scope.paymeValues.amount,'category':$scope.paymeValues.category.LOOKUP_CODE,'trans_date':$scope.paymeValues.TransDate,"receipt":document.getElementsByName('imgValue')[0].value},{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
-	.success(function(data){
-		$ionicLoading.hide();
-		 $scope.paymeValues={};
-		// alert( JSON.stringify(data));
-		
-		
-		//$scope.Availablebalance=data.balances.BALANCE;
-	}).error(function(err){
-		$ionicLoading.hide();
-		 $scope.paymeValues={};
-  //alert( JSON.stringify(err));
-  });
-		
-		   
-	}
+
 	 $scope.$on('$ionicView.beforeEnter', function () {
            $scope.goback();
      });
 
 	$scope.goback=function(input)
 	{
-		
-		// angular.forEach($scope.myForm, function (input) {
-        // if (input && input.hasOwnProperty('$viewValue')) 
-		// {
-         // input.$setPristine();
-        // }
-        // });
-		
-        $location.path("app/hsa");
-	    $scope.paymeValues={};
-        $scope.myForm.$setPristine();
-		$state.go('payme',null,{reload:true});
-		 //window.history.back();
-		
-		 
-		$location.path("/app/hsa");
+		$location.path("app/hsa");
 	}
 	
 	
@@ -1888,9 +1737,10 @@ $scope.payme2=function(myForm){
 	$rootScope.hidecontent=true;
 	localStorage.setItem("backCount","4");
 	$scope.hsaaccId=$rootScope.hsaaccId;
+	$scope.access_token = localStorage.getItem('access_token');
+	$scope.hsaaccno=$rootScope.hsaaccno;
 	$scope.payprovierValues={selectPayee:'',patient_name:'',amount:'',TransDate:'',description:''};
 	$scope.floatlabel=false;
-	
 	
 	$scope.SelectFloat = function ()
 	{ 
@@ -1928,7 +1778,6 @@ $scope.payme2=function(myForm){
 				};
 				$cordovaCamera.getPicture(options).then(function(imageData) {
 					$scope.imgSrc= imageData;
-					 //$scope.imgSrc.push(imageData);
 				}, function(err) {
 				});
 			}
@@ -1936,210 +1785,159 @@ $scope.payme2=function(myForm){
 		return false;
 	}
 	
-	// $scope.deleteimg=function($index){
-		
-		// $scope.imgSrc.splice($index,1)
-	// }
-	$scope.getTransDate=function(){
-		
-		 var options = {
-				date: new Date(),
-				mode: 'date', // or 'time'
-				minDate: new Date(),
-				
-			}
-		   
-			$ionicPlatform.ready(function(){
-				$cordovaDatePicker.show(options).then(function(date){
-					
-					var date1=date.toString();
-					var dataas=date1.split(" ");
-					var Month = ["App","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-					//var mon = Month.indexOf(dataas[1]); 
-					var mon=""; 
-					if(Month.indexOf(dataas[1]).toString().length==1)
-					{
-						mon="0"+Month.indexOf(dataas[1]);
-
-					}
-					else
-					{
-						mon = Month.indexOf(dataas[1]);
-					}
-					//var selectedDate=dataas[3]+'/'+mon+'/'+dataas[2];
-				
-					var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
-					$scope.payprovierValues.TransDate=selectedDate;
-				});
-			})
-		
-	};
 	
-	$scope.access_token = localStorage.getItem('access_token');
-	$scope.hsaaccno=$rootScope.hsaaccno;
+	$scope.getTransDate=function(){
+		var options = {
+			date: new Date(),
+			mode: 'date', // or 'time'
+			minDate: new Date(),
+
+		}
+		$ionicPlatform.ready(function(){
+			$cordovaDatePicker.show(options).then(function(date){
+				var date1=date.toString();
+				var dataas=date1.split(" ");
+				var Month = ["App","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+				var mon=""; 
+				if(Month.indexOf(dataas[1]).toString().length==1)
+				{
+					mon="0"+Month.indexOf(dataas[1]);
+				}
+				else
+				{
+					mon = Month.indexOf(dataas[1]);
+				}
+				var selectedDate=mon+'/'+dataas[2]+'/'+dataas[3];
+				$scope.payprovierValues.TransDate=selectedDate;
+			});
+		})
+
+	};
 	
 	if($cordovaNetwork.isOffline())
 	{
-	   $ionicLoading.hide();
-	   $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function(buttonIndex) {
-	   if(buttonIndex=="1")
+		$ionicLoading.hide();
+		$cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+		.then(function(buttonIndex) {
+			if(buttonIndex=="1")
 			{
 				localStorage.clear();
 				window.location='login.html#/login';
 			}
-	   });
-	   return false;
+		});
+		return false;
 	}else{
-		$http.get("http://app.sterlinghsa.com/api/v1/accounts/bankdetails",{params:{'type':'hsa', 'acc_num':$scope.hsaaccno},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
-		.success(function(data){
-			//alert( JSON.stringify(data));
-			
-			$scope.bank_details=data.bank_details;
-		}).error(function(err){
-	   $ionicLoading.hide();
-	  $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function(buttonIndex) {
-	   if(buttonIndex=="1")
+	$http.get("http://app.sterlinghsa.com/api/v1/accounts/bankdetails",{params:{'type':'hsa', 'acc_num':$scope.hsaaccno},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
+	.success(function(data){
+		$scope.bank_details=data.bank_details;
+	}).error(function(err){
+		$ionicLoading.hide();
+		$cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+		.then(function(buttonIndex) {
+			if(buttonIndex=="1")
 			{
 				localStorage.clear();
 				window.location='login.html#/login';
 			}
-	   });
-	   return false;
-	   
-	  });
+		});
+		return false;
+
+	});
 	}
 	
 	
 	$http.get('  http://app.sterlinghsa.com/api/v1/accounts/categories',{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
 	.success(function(data){
-		//alert(JSON.stringify(data));
-		
 		$scope.categories=data.categories;
 	}).error(function(err){
-  
-   
-  });
+	});
  
- $http.get(' http://app.sterlinghsa.com/api/v1/accounts/description',{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
+	$http.get(' http://app.sterlinghsa.com/api/v1/accounts/description',{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
 	.success(function(data){
-		
-		
 		$scope.descriptions=data.description ;
-		//alert(JSON.stringify($scope.description));
 	}).error(function(err){
-  
-   
-  });
-	 $http.get('http://app.sterlinghsa.com/api/v1/accounts/payeeslist',{params:{'acc_num':'ICA300298'},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
+	});
+	
+	$http.get('http://app.sterlinghsa.com/api/v1/accounts/payeeslist',{params:{'acc_num':'ICA300298'},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
 	.success(function(data){
-		//alert(JSON.stringify(data));
-		//alert("1111");
 		$scope.payee=data.payee ;
-		//alert(JSON.stringify($scope.payee));
 	}).error(function(err){
-  
-   });
+	});
 	
 	$http.get(" http://app.sterlinghsa.com/api/v1/accounts/balances",{params:{'type':'hsa'},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
 	.success(function(data){
-		//alert( JSON.stringify(data));
-		//$ionicLoading.hide();
 		$scope.availablebalance=data.balances.BALANCE;
 	}).error(function(err){
-  
-  });
+
+	});
 	
 	 
 	$scope.submitValue=function()
 	{
-		//$scope.payprovierValues={selectPayee:'',patient_name:'',amount:'',TransDate:'',description:''};
-		// alert(JSON.stringify($scope.payprovierValues.selectPayee.VENDOR_ID))
-		// alert(JSON.stringify($scope.payprovierValues.patient_name))
-		// alert(JSON.stringify($scope.payprovierValues.amount))
-		// alert(JSON.stringify($scope.payprovierValues.TransDate))
-		
-		
 		if($scope.payprovierValues.amount == 0){
-			
-		$cordovaDialogs.alert('Please enter the amount greater than 0','Sorry','OK')
+
+			$cordovaDialogs.alert('Please enter the amount greater than 0','Sorry','OK')
 			.then(function() {
-			//$scope.payprovierValues.amount={};
-		});
-		
-	}else{
-		$ionicLoading.show({
-		  template: '<ion-spinner icon="ios"></ion-spinner><br>Loading...'
-		});
-		
-		$http.post("http://app.sterlinghsa.com/api/v1/accounts/payprovider",{'hsa_acct_id':$scope.hsaaccId,'vendor_id':$scope.payprovierValues.selectPayee.VENDOR_ID,'amount':$scope.payprovierValues.amount,'patient_name':$scope.payprovierValues.patient_name,'trans_date':$scope.payprovierValues.TransDate,"receipt":document.getElementsByName('imgValue')[0].value},{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
-		.success(function(data){
-			//alert(JSON.stringify(data));
-			
-			if(data.status == "SUCCESS")
-			{
-				$ionicLoading.hide();
-			$scope.transactionid = data.transaction_id;	
-			$cordovaDialogs.alert('Your Tansaction ID '+ "--->" + $scope.transactionid , 'Submitted successsfully', 'OK')
-			.then(function() {
-				$scope.imgSrc= '';
-				var myEl = angular.element( document.querySelector( '#receipt' ) );
-				myEl.removeAttr('src');
-				$scope.payprovierValues={};
-				$scope.floatlabel=false;
-		});
-		return false;
-		}else if(data.status == "FAILED"){
-			$ionicLoading.hide();
-			$cordovaDialogs.alert(data.error_message, 'Sorry', 'OK')
-			.then(function() {
-				$scope.imgSrc= '';
-				var myEl = angular.element( document.querySelector( '#receipt' ) );
-				myEl.removeAttr('src');
-				$scope.payprovierValues={};
-				$scope.floatlabel=false;
-		});
-		return false;
+			});
+
+		}else{
+			$ionicLoading.show({
+			template: '<ion-spinner icon="ios"></ion-spinner><br>Loading...'
+			});
+
+			$http.post("http://app.sterlinghsa.com/api/v1/accounts/payprovider",{'hsa_acct_id':$scope.hsaaccId,'vendor_id':$scope.payprovierValues.selectPayee.VENDOR_ID,'amount':$scope.payprovierValues.amount,'patient_name':$scope.payprovierValues.patient_name,'trans_date':$scope.payprovierValues.TransDate,"receipt":document.getElementsByName('imgValue')[0].value},{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
+			.success(function(data){
+
+				if(data.status == "SUCCESS")
+				{
+					$ionicLoading.hide();
+					$scope.transactionid = data.transaction_id;	
+					$cordovaDialogs.alert('Your Tansaction ID '+ "--->" + $scope.transactionid , 'Submitted successsfully', 'OK')
+					.then(function() {
+						$scope.imgSrc= '';
+						var myEl = angular.element( document.querySelector( '#receipt' ) );
+						myEl.removeAttr('src');
+						$scope.payprovierValues={};
+						$scope.floatlabel=false;
+					});
+					return false;
+				}else if(data.status == "FAILED"){
+					$ionicLoading.hide();
+					$cordovaDialogs.alert(data.error_message, 'Sorry', 'OK')
+					.then(function() {
+						$scope.imgSrc= '';
+						var myEl = angular.element( document.querySelector( '#receipt' ) );
+						myEl.removeAttr('src');
+						$scope.payprovierValues={};
+						$scope.floatlabel=false;
+					});
+					return false;
+				}
+			}).error(function(err){
+			});
 		}
-			//$scope.Availablebalance=data.balances.BALANCE;
-		}).error(function(err){
-			//alert(JSON.stringify(err));
-		});
-	}
-	
+
 	}
 	$scope.goback=function()
 	{
 		$rootScope.hidecontent=true;
-		 //window.history.back();
 		$location.path("app/hsa");
 	}
 	
 })
-
-
-
 .controller('DisbursementCtrl', function($rootScope,$scope,$cordovaNetwork,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork) {
 	$rootScope.hidecontent=true;
 	localStorage.setItem("backCount","4");
-	//alert("DisbursementCtrl");
-	
-	
 	$scope.goback=function()
 	{
-		// $rootScope.hidecontent=true;
-		 //window.history.back();
-		 $location.path("activity");
+		$location.path("activity");
 	}
-	
 	
 })
 
 
 .controller('ScheduledcontributeCtrl', function($scope,$ionicHistory,$rootScope,$cordovaNetwork,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork) {
 	$rootScope.hidecontent=true;
-	//alert("scheduledcontribute");
 	localStorage.setItem("backCount","5");
 	$scope.username = localStorage.getItem('username');
 	$scope.access_token = localStorage.getItem('access_token');
@@ -2147,47 +1945,37 @@ $scope.payme2=function(myForm){
 	
 	$http.get(" http://app.sterlinghsa.com/api/v1/accounts/schedule",{params:{'acct_id':$scope.hsaaccId,'trans_type':'c'},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
 	.success(function(data){ 
-	     $ionicLoading.hide();
-		//alert("Data: " + JSON.stringify(data));
-		if(data.schedule_list!=null){
-			$scope.schedule_list=data.schedule_list;
-			
-		}else{
-			 $cordovaDialogs.confirm('No Scheduledcontribution', 'Sorry', 'ok')
-			  .then(function(buttonIndex) {
-				   if(buttonIndex=="1")
+	$ionicLoading.hide();
+	if(data.schedule_list!=null){
+		$scope.schedule_list=data.schedule_list;
+
+	}else{
+		$cordovaDialogs.confirm('No Scheduledcontribution', 'Sorry', 'ok')
+		.then(function(buttonIndex) {
+			if(buttonIndex=="1")
 			{
-	            
 				$location.path("/activityContribution");
 			}
-			 	
-             });
-			
-		
-		}
-		
-		
-		//alert(JSON.stringify($scope.schedule_list));
+
+		});
+	}
 	}).error(function(err){
-   $ionicLoading.hide();
-   $cordovaDialogs.alert('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function() {
-   });
-   return false;
-   
-  });
+		$ionicLoading.hide();
+		$cordovaDialogs.alert('Session expired, Please Login Again', 'Sorry', 'ok')
+		.then(function() {
+		});
+		return false;
+
+	});
  
 	$scope.goback=function()
 	{
-		//$rootScope.hidecontent=false;
-		//window.history.back();
 		$location.path("/activityContribution")
 	}
 })
 
 .controller('ScheduledDisbursementCtrl', function($scope,$rootScope,$cordovaNetwork,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork) {
 	$rootScope.hidecontent=true;
-	//alert("scheduleddisburse");
 	localStorage.setItem("backCount","5");
 	$scope.username = localStorage.getItem('username');
 	$scope.access_token = localStorage.getItem('access_token');
@@ -2195,104 +1983,92 @@ $scope.payme2=function(myForm){
 	
 	$http.get(" http://app.sterlinghsa.com/api/v1/accounts/schedule",{params:{'acct_id':$scope.hsaaccId,'trans_type':'d'},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
 	.success(function(data){ 
-	      $ionicLoading.hide();
-		  if(data.schedule_list==null){
-			 $cordovaDialogs.confirm('No ScheduledDisbursement', 'Sorry', 'ok')
-               .then(function(buttonIndex) {
-	          if(buttonIndex=="1")
-			  {
-				
-				$location.path('/disbursement');
-			  }
-   }); 
-		  }
-		  else{
-			  $scope.schedule_list=data.schedule_list;
-		//alert(JSON.stringify($scope.schedule_list));
-		  }
-		//alert("Data: " + JSON.stringify(data));
-		
+		$ionicLoading.hide();
+		if(data.schedule_list==null){
+			$cordovaDialogs.confirm('No ScheduledDisbursement', 'Sorry', 'ok')
+			.then(function(buttonIndex) {
+				if(buttonIndex=="1")
+				{
+					$location.path('/disbursement');
+				}
+			}); 
+		}
+		else{
+			$scope.schedule_list=data.schedule_list;
+		}
+
 	}).error(function(err){
-   $ionicLoading.hide();
-  $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function(buttonIndex) {
-	   if(buttonIndex=="1")
+		$ionicLoading.hide();
+		$cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+		.then(function(buttonIndex) {
+			if(buttonIndex=="1")
 			{
 				localStorage.clear();
 				window.location='login.html#/login';
 			}
-   });
-   return false;
-   
-  });
- 
-	
+		});
+		return false;
+
+	});
+
 	$scope.goback=function()
 	{
-		//$rootScope.hidecontent=false;
-		//window.history.back();
 		$location.path("/disbursement")
 	}
 })
 	
 .controller('RecentCtrl', function($scope,$rootScope,$cordovaNetwork,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork) {
 	$rootScope.hidecontent=true;
-	//alert("recent");
 	localStorage.setItem("backCount","5");
 	$scope.username = localStorage.getItem('username');
 	$scope.access_token = localStorage.getItem('access_token');
 	$scope.hsaaccId=$rootScope.hsaaccId;
 	if($cordovaNetwork.isOffline())
- {
-   $ionicLoading.hide();
-  $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function(buttonIndex) {
-	   if(buttonIndex=="1")
+	{
+		$ionicLoading.hide();
+		$cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+		.then(function(buttonIndex) {
+			if(buttonIndex=="1")
 			{
 				localStorage.clear();
 				window.location='login.html#/login';
 			}
-   });
-   return false;
- }else{
-	$http.get(" http://app.sterlinghsa.com/api/v1/accounts/recent-activity",{params:{'acct_id':$scope.hsaaccId,'trans_type':'c','plan_type':'hsa'},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
-	.success(function(data){
-		 $ionicLoading.hide();
-		//alert("Data: " + JSON.stringify(data));
-		if(data.transcation_list==null){
-			 $cordovaDialogs.confirm('No RecentContribution', 'Sorry', 'ok')
-               .then(function(buttonIndex) {
-	          if(buttonIndex=="1")
-			  {
-				
-				$location.path('/activityContribution');
-			  }
-            }); 
-		  }
-		  else{
-			  $scope.transcation_list=data.transcation_list;
-		      //alert(JSON.stringify($scope.transcation_list));
-		  }
-		
-	}).error(function(err){
-   $ionicLoading.hide();
-   $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function(buttonIndex) {
-	   if(buttonIndex=="1")
-			{
-				localStorage.clear();
-				window.location='login.html#/login';
+		});
+		return false;
+	}else{
+		$http.get(" http://app.sterlinghsa.com/api/v1/accounts/recent-activity",{params:{'acct_id':$scope.hsaaccId,'trans_type':'c','plan_type':'hsa'},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
+		.success(function(data){
+			$ionicLoading.hide();
+			if(data.transcation_list==null){
+			$cordovaDialogs.confirm('No RecentContribution', 'Sorry', 'ok')
+			.then(function(buttonIndex) {
+				if(buttonIndex=="1")
+				{
+					$location.path('/activityContribution');
+				}
+			}); 
 			}
-   });
-   return false;
-   
-  });
- }
+			else{
+				$scope.transcation_list=data.transcation_list;
+			}
+
+		}).error(function(err){
+			$ionicLoading.hide();
+			$cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+			.then(function(buttonIndex) {
+				if(buttonIndex=="1")
+				{
+					localStorage.clear();
+					window.location='login.html#/login';
+				}
+			});
+			return false;
+
+		});
+	}
 	
 	$scope.goback=function()
 	{
-		//$rootScope.hidecontent=false;
-		//window.history.back();
 		$location.path("/activityContribution")
 	}
 	
@@ -2300,48 +2076,44 @@ $scope.payme2=function(myForm){
 
 .controller('recentFSACtrl', function($scope,$cordovaNetwork,$rootScope,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork) {
 	$rootScope.hidecontent=true;
-//alert("recentfsa");
 	localStorage.setItem("backCount","5");
 	$scope.username = localStorage.getItem('username');
 	$scope.access_token = localStorage.getItem('access_token');
 	$scope.hsaaccId=$rootScope.hsaaccId;
 	if($cordovaNetwork.isOffline())
- {
-   $ionicLoading.hide();
-   $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function(buttonIndex) {
-	   if(buttonIndex=="1")
-			{
-				localStorage.clear();
-				window.location='login.html#/login';
-			}
-   });
-   return false;
- }else{
+	{
+	$ionicLoading.hide();
+	$cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+	.then(function(buttonIndex) {
+		if(buttonIndex=="1")
+		{
+			localStorage.clear();
+			window.location='login.html#/login';
+		}
+	});
+	return false;
+	}else{
 	$http.get(" http://app.sterlinghsa.com/api/v1/accounts/recent-activity",{params:{'acct_id':$scope.hsaaccId,'trans_type':'c','plan_type':'fsa'},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
 	.success(function(data){
-		 $ionicLoading.hide();
-		//alert("Data: " + JSON.stringify(data));
+		$ionicLoading.hide();
 		$scope.transcation_list=data.transcation_list;
-		//alert(JSON.stringify($scope.transcation_list));
 	}).error(function(err){
-   $ionicLoading.hide();
-  $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function(buttonIndex) {
-	   if(buttonIndex=="1")
+		$ionicLoading.hide();
+		$cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+		.then(function(buttonIndex) {
+			if(buttonIndex=="1")
 			{
 				localStorage.clear();
 				window.location='login.html#/login';
 			}
-   });
-   return false;
-   
-  });
- }
+		});
+		return false;
+
+	});
+	}
 	$scope.goback=function()
 	{
 		$rootScope.hidecontent=false;
-		//window.history.back();
 		$location.path("app/fsa")
 	}
 	
@@ -2349,62 +2121,56 @@ $scope.payme2=function(myForm){
 
 .controller('lastcontributionCtrl', function($scope,$rootScope,$cordovaNetwork,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork) {
 	$rootScope.hidecontent=true;
-//alert("recentfsa");
 	localStorage.setItem("backCount","5");
 	$scope.username = localStorage.getItem('username');
 	$scope.access_token = localStorage.getItem('access_token');
 	$scope.hsaaccId=$rootScope.hsaaccId;
 	if($cordovaNetwork.isOffline())
- {
-   $ionicLoading.hide();
-  $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function(buttonIndex) {
-	   if(buttonIndex=="1")
+	{
+		$ionicLoading.hide();
+		$cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+		.then(function(buttonIndex) {
+			if(buttonIndex=="1")
 			{
 				localStorage.clear();
 				window.location='login.html#/login';
 			}
-   });
-   return false;
- }else{
-	$http.get(" http://app.sterlinghsa.com/api/v1/accounts/recent-activity",{params:{'acct_id':$scope.fsaaccId,'trans_type':'c','plan_type':'fsa'},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
-	.success(function(data){
-		 $ionicLoading.hide();
-		//alert("Data: " + JSON.stringify(data));
-		if(data.transcation_list==null){
-			 $cordovaDialogs.confirm('No RecentContribution', 'Sorry', 'ok')
-               .then(function(buttonIndex) {
-	          if(buttonIndex=="1")
-			  {
-				
-				$location.path('/fsacontribution');
-			  }
-   }); 
-		  }
-		  else{
-			 $scope.transcation_list=data.transcation_list;
-		     //alert(JSON.stringify($scope.transcation_list));
-		  }
-		
-	}).error(function(err){
-   $ionicLoading.hide();
-   $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function(buttonIndex) {
-	   if(buttonIndex=="1")
-			{
-				localStorage.clear();
-				window.location='login.html#/login';
+		});
+		return false;
+	}else{
+		$http.get(" http://app.sterlinghsa.com/api/v1/accounts/recent-activity",{params:{'acct_id':$scope.fsaaccId,'trans_type':'c','plan_type':'fsa'},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
+		.success(function(data){
+			$ionicLoading.hide();
+			if(data.transcation_list==null){
+				$cordovaDialogs.confirm('No RecentContribution', 'Sorry', 'ok')
+				.then(function(buttonIndex) {
+					if(buttonIndex=="1")
+					{
+						$location.path('/fsacontribution');
+					}
+				}); 
 			}
-   });
-   return false;
-   
-  });
- }
+			else{
+				$scope.transcation_list=data.transcation_list;
+			}
+
+		}).error(function(err){
+			$ionicLoading.hide();
+			$cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+			.then(function(buttonIndex) {
+				if(buttonIndex=="1")
+				{
+					localStorage.clear();
+					window.location='login.html#/login';
+				}
+			});
+			return false;
+
+		});
+	}
 	
 	$scope.goback=function()
 	{
-		//$rootScope.hidecontent=false;
-		//window.history.back();
 		$location.path("app/fsa")
 	}
 	
@@ -2413,77 +2179,68 @@ $scope.payme2=function(myForm){
 .controller('fsacontributionCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope) {
 	$rootScope.hidecontent=true;
 	localStorage.setItem("backCount","3");
-	
 	$scope.username = localStorage.getItem('username');
 	$scope.access_token = localStorage.getItem('access_token');
-	
-	 
+
 	$scope.goback=function()
 	{
 		$rootScope.hidecontent=false;
-		//window.history.back();
 		$location.path("app/fsa")
 	}
 	
 })
 .controller('lastdisbursementCtrl', function($scope,$rootScope,$cordovaNetwork,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork) {
 	$rootScope.hidecontent=true;
-//alert("recentfsa");
 	localStorage.setItem("backCount","5");
 	$scope.username = localStorage.getItem('username');
 	$scope.access_token = localStorage.getItem('access_token');
 	$scope.hsaaccId=$rootScope.hsaaccId;
 	if($cordovaNetwork.isOffline())
- {
-   $ionicLoading.hide();
-  $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function(buttonIndex) {
-	   if(buttonIndex=="1")
-			{
-				localStorage.clear();
-				window.location='login.html#/login';
-			}
-   });
-   return false;
- }else{
-	$http.get(" http://app.sterlinghsa.com/api/v1/accounts/recent-activity",{params:{'acct_id':$scope.fsaaccId,'trans_type':'d','plan_type':'fsa'},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
-	.success(function(data){
+	{
 		$ionicLoading.hide();
-		//alert("Data: " + JSON.stringify(data));
-		if(data.transcation_list==null){
-			 $cordovaDialogs.confirm('No RecentDisbursement', 'Sorry', 'ok')
-               .then(function(buttonIndex) {
-	          if(buttonIndex=="1")
-			  {
-				
-				$location.path('/fsacontribution');
-			  }
-   }); 
-		  }
-		  else{
-			 $scope.transcation_list=data.transcation_list;
-		     //alert(JSON.stringify($scope.transcation_list));
-		  }
-		
-	}).error(function(err){
-   $ionicLoading.hide();
-   $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function(buttonIndex) {
-	   if(buttonIndex=="1")
+		$cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+		.then(function(buttonIndex) {
+			if(buttonIndex=="1")
 			{
 				localStorage.clear();
 				window.location='login.html#/login';
 			}
-   });
-   return false;
-   
-  });
- }
+		});
+		return false;
+	}else{
+		$http.get(" http://app.sterlinghsa.com/api/v1/accounts/recent-activity",{params:{'acct_id':$scope.fsaaccId,'trans_type':'d','plan_type':'fsa'},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
+		.success(function(data){
+			$ionicLoading.hide();
+			if(data.transcation_list==null){
+				$cordovaDialogs.confirm('No RecentDisbursement', 'Sorry', 'ok')
+				.then(function(buttonIndex) {
+					if(buttonIndex=="1")
+					{
+						$location.path('/fsacontribution');
+					}
+				}); 
+			}
+			else{
+				$scope.transcation_list=data.transcation_list;
+			}
+
+		}).error(function(err){
+			$ionicLoading.hide();
+			$cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+			.then(function(buttonIndex) {
+				if(buttonIndex=="1")
+				{
+					localStorage.clear();
+					window.location='login.html#/login';
+				}
+			});
+			return false;
+
+		});
+	}
 	
 	$scope.goback=function()
 	{
-		//$rootScope.hidecontent=false;
-		//window.history.back();
 		$location.path("app/fsa")
 	}
 	
@@ -2491,70 +2248,59 @@ $scope.payme2=function(myForm){
 
 .controller('RecentdisburseCtrl', function($scope,$rootScope,$cordovaNetwork,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork) {
 	$rootScope.hidecontent=true;
-	//alert("recentdisburse");
 	localStorage.setItem("backCount","5");
-	//alert('RecentdisburseCtrl');
 	$scope.username = localStorage.getItem('username');
 	$scope.access_token = localStorage.getItem('access_token');
 	$scope.hsaaccId=$rootScope.hsaaccId;
 	if($cordovaNetwork.isOffline())
- {
-   $ionicLoading.hide();
-   $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function(buttonIndex) {
-	   if(buttonIndex=="1")
-			{
-				localStorage.clear();
-				window.location='login.html#/login';
-			}
-   });
-   return false;
- }else{
+	{
+	$ionicLoading.hide();
+	$cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+	.then(function(buttonIndex) {
+	if(buttonIndex=="1")
+	{
+	localStorage.clear();
+	window.location='login.html#/login';
+	}
+	});
+	return false;
+	}else{
 	$http.get(" http://app.sterlinghsa.com/api/v1/accounts/recent-activity",{params:{'acct_id':$scope.hsaaccId,'trans_type':'d','plan_type':'hsa'},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
 	.success(function(data){
 		$ionicLoading.hide();
-		//alert("Data: " + JSON.stringify(data));
-		 if(data.transcation_list==null){
-			 $cordovaDialogs.confirm('No RecentDisbursement', 'Sorry', 'ok')
-               .then(function(buttonIndex) {
-	          if(buttonIndex=="1")
-			  {
-				
-				$location.path('/disbursement');
-			  }
-   }); 
-		  }
-		  else{
-			 $scope.transcation_list=data.transcation_list;
-		     //alert(JSON.stringify($scope.transcation_list));
-		  }
-		
-		
+		if(data.transcation_list==null){
+			$cordovaDialogs.confirm('No RecentDisbursement', 'Sorry', 'ok')
+			.then(function(buttonIndex) {
+				if(buttonIndex=="1")
+				{
+					$location.path('/disbursement');
+				}
+			}); 
+		}
+		else{
+			$scope.transcation_list=data.transcation_list;
+		}
 	}).error(function(err){
-   $ionicLoading.hide();
-   $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
-   .then(function(buttonIndex) {
-	   if(buttonIndex=="1")
+		$ionicLoading.hide();
+		$cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+		.then(function(buttonIndex) {
+			if(buttonIndex=="1")
 			{
 				localStorage.clear();
 				window.location='login.html#/login';
 			}
-   });
-   return false;
-   
-  });
- }
+		});
+		return false;
+
+	});
+	}
+	
 	$scope.goback=function()
 	{
-		//$rootScope.hidecontent=false;
-		//window.history.back();
 		$location.path("/disbursement")
 	}
 	
-	
 })
-
-
 .controller('makecontributeCtrl', function($scope,$cordovaNetwork,$rootScope,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork) {
 	$rootScope.hidecontent=true;
 	$scope.TransDate="";
