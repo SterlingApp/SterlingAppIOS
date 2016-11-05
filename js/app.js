@@ -220,6 +220,11 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
 		templateUrl: 'templates/fsa/fsadependent.html',
 		controller: 'fsadependentCtrl'
 	})	
+	.state('fsahealthcare', {
+		url: '/fsahealthcare',
+		templateUrl: 'templates/fsa/fsahealthcare.html',
+		controller: 'fsahealthcareCtrl'
+    })
 	
 	// HRA 
 	.state('app.hra', {
