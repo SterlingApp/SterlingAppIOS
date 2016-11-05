@@ -192,11 +192,6 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
 		templateUrl: 'templates/recentcontribute.html',
 		controller: 'RecentcontributeCtrl'
 	})
-	.state('newclaimbicycle', {
-		url: '/newclaimbicycle',
-		templateUrl: 'templates/newclaimbicycle.html',
-		controller: 'NewclaimbicycleCtrl'
-	})
 	.state('new', {
 		cache: false,
 		url: '/new',
@@ -220,11 +215,6 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'starter.
 		templateUrl: 'templates/fsa/fsadependent.html',
 		controller: 'fsadependentCtrl'
 	})	
-	.state('fsahealthcare', {
-		url: '/fsahealthcare',
-		templateUrl: 'templates/fsa/fsahealthcare.html',
-		controller: 'fsahealthcareCtrl'
-    })
 	
 	// HRA 
 	.state('app.hra', {
