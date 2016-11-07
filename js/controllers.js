@@ -1,12 +1,12 @@
 angular.module('starter.controllers', [])
-.controller('mainController', function($scope,$ionicPlatform) {
+.controller('mainController', function($scope,$ionicPlatform,$rootScope) {
 	$ionicPlatform.ready(function() {
-		$scope.IOS = ionic.Platform.isIOS();
-		$scope.Android = ionic.Platform.isAndroid();
+		$rootScope.IOS = ionic.Platform.isIOS();
+		$rootScope.Android = ionic.Platform.isAndroid();
 		$scope.layout='style';
-		if($scope.IOS==true){
+		if($rootScope.IOS==true){
 			$scope.layout='style-ios'
-		}else if($scope.Android==true){
+		}else if($rootScope.Android==true){
 			$scope.layout='style-android'
 		}
 	})
@@ -2494,18 +2494,35 @@ angular.module('starter.controllers', [])
 
 	$scope.logOut=function()
 	{
-		$cordovaDialogs.confirm('Do you want to Logout', 'Are you sure', ['Yes','No'])
-		.then(function(buttonIndex) {
-			if(buttonIndex=="1")
-			{
+		if($rootScope.IOS==true){
+				var confirmPopup = $ionicPopup.confirm({
+				title: 'Do you want to Logout',
+				template: 'Are you sure',
+				okText: 'No',
+				cancelText: 'Yes',
+			});
+			confirmPopup.then(function(res) {
+				if(res) {
+					console.log('You are not sure');
+				} else {
+					localStorage.clear();
+					window.location='login.html#/login';
+				}
+			});
+		}else{
+			$cordovaDialogs.confirm('Do you want to Logout', 'Are you sure', ['Yes','No'])
+			.then(function(buttonIndex) {
+				if(buttonIndex=="1")
+				{
 				localStorage.clear();
 				window.location='login.html#/login';
-			}
-			else{
+				}
+				else{
 				ionic.Platform.exitApp();
-			}
-
-		});
+				}
+			});
+		}
+		
 	}
 	$scope.showConfirm = function() {
 		var confirmPopup = $ionicPopup.confirm({
