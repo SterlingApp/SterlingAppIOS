@@ -799,8 +799,23 @@ angular.module('starter.controllers', [])
 				if(data.status == "SUCCESS"){
 					$ionicLoading.hide();
 					$scope.transactionid = data.transaction_id;
-					$cordovaDialogs.alert('Please reference this Disbursement number'+ " " + $scope.transactionid +" "+'for further communication.', 'Disbursement Submitted Successfully', 'OK')
-					.then(function() {
+					if($rootScope.IOS==true){
+						var alertPopup = $ionicPopup.alert({
+							title: 'Disbursement Submitted Successfully',
+							template: 'Please reference this Disbursement number'+ " " + $scope.transactionid +" "+'for further communication.'
+						});
+
+						alertPopup.then(function(res) {
+							$scope.imgSrc= '';
+						var myEl = angular.element( document.querySelector( '#receipt' ) );
+						myEl.removeAttr('src');
+						$scope.paymeValues={};
+						$scope.floatlabel=false;
+						$scope.floatlabel1=false;
+						});
+					}else{
+						$cordovaDialogs.alert('Please reference this Disbursement number'+ " " + $scope.transactionid +" "+'for further communication.', 'Disbursement Submitted Successfully', 'OK')
+						.then(function() {
 						$scope.imgSrc= '';
 						var myEl = angular.element( document.querySelector( '#receipt' ) );
 						myEl.removeAttr('src');
@@ -810,10 +825,27 @@ angular.module('starter.controllers', [])
 						
 					});
 					return false;
+					}	
+					
 				}else if(data.status == "FAILED"){
 					$ionicLoading.hide();
-					$cordovaDialogs.alert(data.error_message, 'Sorry', 'OK')
-					.then(function($setUntouched,$setPristine) {
+					if($rootScope.IOS==true){
+						var alertPopup = $ionicPopup.alert({
+							title: 'Sorry',
+							template: data.error_message
+						});
+
+						alertPopup.then(function(res) {
+							$scope.imgSrc= '';
+						var myEl = angular.element( document.querySelector( '#receipt' ) );
+						myEl.removeAttr('src');
+						$scope.paymeValues={};
+						$scope.floatlabel=false;
+						$scope.floatlabel1=false;
+						});
+					}else{
+						$cordovaDialogs.alert(data.error_message, 'Sorry', 'OK')
+						.then(function($setUntouched,$setPristine) {
 						$scope.imgSrc= '';
 						var myEl = angular.element( document.querySelector( '#receipt' ) );
 						myEl.removeAttr('src');
@@ -821,9 +853,9 @@ angular.module('starter.controllers', [])
 						$scope.floatlabel=false;
 						$scope.floatlabel1=false;
 						
-					});
-					return false;
-
+						});
+						return false;
+						}	
 				}
 			}).error(function(err){
 			});
