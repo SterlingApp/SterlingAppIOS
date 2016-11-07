@@ -2499,7 +2499,7 @@ angular.module('starter.controllers', [])
 				title: 'Do you want to Logout',
 				template: 'Are you sure',
 				okText: 'No',
-				cancelText: 'Yes',
+				// cancelText: 'Yes',
 			});
 			confirmPopup.then(function(res) {
 				if(res) {
@@ -2522,7 +2522,6 @@ angular.module('starter.controllers', [])
 				}
 			});
 		}
-		
 	}
 	$scope.showConfirm = function() {
 		var confirmPopup = $ionicPopup.confirm({
