@@ -2059,7 +2059,7 @@ angular.module('starter.controllers', [])
 						correctOrientation:true
 					};
 					$cordovaCamera.getPicture(options).then(function(imageData) {
-						$scope.imgSrc= imageData;
+						$scope.imgSrc.push(imageData);
 					}, function(err) {
 					});
 				}
@@ -2079,7 +2079,7 @@ angular.module('starter.controllers', [])
 						correctOrientation:true
 					};
 					$cordovaCamera.getPicture(options).then(function(imageData) {
-						$scope.imgSrc= imageData;
+						$scope.imgSrc.push(imageData);
 					}, function(err) {
 					});
 				}else if(options==2){
@@ -3572,7 +3572,7 @@ angular.module('starter.controllers', [])
 						correctOrientation:true
 					};
 					$cordovaCamera.getPicture(options).then(function(imageData) {
-						$scope.imgSrc= imageData;
+						 $scope.imgSrc.push(imageData);
 					}, function(err) {
 					});
 				}
@@ -3592,7 +3592,7 @@ angular.module('starter.controllers', [])
 						correctOrientation:true
 					};
 					$cordovaCamera.getPicture(options).then(function(imageData) {
-						$scope.imgSrc= imageData;
+						 $scope.imgSrc.push(imageData);
 					}, function(err) {
 					});
 				}else if(options==2){
@@ -3860,7 +3860,7 @@ angular.module('starter.controllers', [])
 						correctOrientation:true
 					};
 					$cordovaCamera.getPicture(options).then(function(imageData) {
-						$scope.imgSrc= imageData;
+						 $scope.imgSrc.push(imageData);
 					}, function(err) {
 					});
 				}
@@ -3880,7 +3880,7 @@ angular.module('starter.controllers', [])
 						correctOrientation:true
 					};
 					$cordovaCamera.getPicture(options).then(function(imageData) {
-						$scope.imgSrc= imageData;
+						 $scope.imgSrc.push(imageData);
 					}, function(err) {
 					});
 				}else if(options==2){
