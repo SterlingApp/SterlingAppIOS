@@ -21,25 +21,56 @@ angular.module('starter.controllers', [])
 		if($cordovaNetwork.isOffline())
 		{
 			$ionicLoading.hide();
-			$cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
-			.then(function() {
-			});
-			return false;
+			if($rootScope.IOS==true){
+				var alertPopup = $ionicPopup.alert({
+					title: 'Sorry',
+					template: 'Please Connect with internet'
+				});
+
+				alertPopup.then(function(res) {
+				});
+			}else{
+				$cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
+				.then(function() {
+				});
+				return false;
+			}	
 		}
 		else if($scope.loginData.username==""){
 			$ionicLoading.hide()
-			$cordovaDialogs.alert('Please Enter Username', 'Sorry', 'OK')
-			.then(function() {
-			});
-			return false;
+			if($rootScope.IOS==true){
+				var alertPopup = $ionicPopup.alert({
+					title: 'Sorry',
+					template: 'Please Enter Username'
+				});
+
+				alertPopup.then(function(res) {
+				});
+			}else{
+				$cordovaDialogs.alert('Please Enter Username', 'Sorry', 'OK')
+				.then(function() {
+				});
+				return false;
+			}	
 		}
 		else if($scope.loginData.password=="")
 		{
 			$ionicLoading.hide()
-			$cordovaDialogs.alert('Please Enter Password', 'Sorry', 'ok')
-			.then(function() {
-			});
-			return false;
+			if($rootScope.IOS==true){
+				var alertPopup = $ionicPopup.alert({
+					title: 'Sorry',
+					template: 'Please Enter Password'
+				});
+
+				alertPopup.then(function(res) {
+				});
+			}else{
+				$cordovaDialogs.alert('Please Enter Password', 'Sorry', 'ok')
+				.then(function() {
+				});
+				return false;
+			}	
+			
 		}
 		else
 		{
