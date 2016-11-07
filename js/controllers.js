@@ -1523,13 +1523,25 @@ angular.module('starter.controllers', [])
 		.success(function(data){
 			$ionicLoading.hide();
 			if(data.transcation_list==null){
-			$cordovaDialogs.confirm('No RecentContribution', 'Sorry', 'ok')
-			.then(function(buttonIndex) {
-				if(buttonIndex=="1")
-				{
-					$location.path('/activityContribution');
+				if($rootScope.IOS==true){
+					var alertPopup = $ionicPopup.alert({
+						title: 'Sorry',
+						template: 'No RecentContribution'
+					});
+
+					alertPopup.then(function(res) {
+						$location.path('/activityContribution');
+					});
+				}else{
+					$cordovaDialogs.confirm('No RecentContribution', 'Sorry', 'ok')
+						.then(function(buttonIndex) {
+							if(buttonIndex=="1")
+							{
+								$location.path('/activityContribution');
+							}
+						}); 
 				}
-			}); 
+			
 			}
 			else{
 				$scope.transcation_list=data.transcation_list;
