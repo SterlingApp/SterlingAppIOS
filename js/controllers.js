@@ -2394,7 +2394,8 @@ angular.module('starter.controllers', [])
       });
 
       alertPopup.then(function(res) {
-         // Custom functionality....
+        localStorage.clear();
+		window.location='login.html#/login';
       });
 	
 	$scope.hidefsa=false;
