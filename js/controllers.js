@@ -4182,14 +4182,14 @@ angular.module('starter.controllers', [])
 			if($rootScope.IOS==true){
 				var alertPopup = $ionicPopup.alert({
 					title: 'Sorry',
-					template: 'No Payments'
+					template: 'Our record indicates that you do not have any COBRA payments'
 				});
 
 				alertPopup.then(function(res){
 					$location.path('/app/cobra');
 				});
 			}else{
-				$cordovaDialogs.confirm('No Payments', 'Sorry', 'ok')
+				$cordovaDialogs.confirm('Our record indicates that you do not have any COBRA payments', 'Sorry', 'ok')
 				.then(function(buttonIndex) {
 					if(buttonIndex=="1")
 					{
