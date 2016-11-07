@@ -286,16 +286,27 @@ angular.module('starter.controllers', [])
 		$scope.total_contribution = data.total_contributions;
 	}).error(function(err){
 		$ionicLoading.hide();
-		$cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
-		.then(function(buttonIndex) {
-			if(buttonIndex=="1")
-			{
-				localStorage.clear();
-				window.location='login.html#/login';
-			}
-		});
-		return false;
+		if($rootScope.IOS==true){
+				var alertPopup = $ionicPopup.alert({
+					title: 'Sorry',
+					template: 'Session expired, Please Login Again'
+				});
 
+				alertPopup.then(function(res) {
+					localStorage.clear();
+					window.location='login.html#/login';
+				});
+			}else{
+				$cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+				.then(function(buttonIndex) {
+					if(buttonIndex=="1")
+					{
+						localStorage.clear();
+						window.location='login.html#/login';
+					}
+				});
+				return false;
+			}
 	});
  
 	$http.get(' http://app.sterlinghsa.com/api/v1/accounts/description',{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
@@ -313,10 +324,20 @@ angular.module('starter.controllers', [])
   
 	$scope.submitvalues=function(){
 		if($scope.makecontribute.amount == 0){
-			$cordovaDialogs.alert('Please enter the amount greater than 0','Sorry','OK')
-			.then(function() {
-			});
+			if($rootScope.IOS==true){
+				var alertPopup = $ionicPopup.alert({
+					title: 'Sorry',
+					template: 'Please enter the amount greater than 0'
+				});
 
+				alertPopup.then(function(res) {
+				});
+			}else{
+				$cordovaDialogs.alert('Please enter the amount greater than 0','Sorry','OK')
+				.then(function() {
+				});
+
+			}	
 		}else{
 			$ionicLoading.show({
 			template: '<ion-spinner icon="ios"></ion-spinner><br>Loading...'
@@ -328,15 +349,31 @@ angular.module('starter.controllers', [])
 				{
 					$ionicLoading.hide();
 					$scope.transactionid = data.transaction_id;	
-					$cordovaDialogs.alert('Transaction ID is '+ "" + $scope.transactionid , 'Contribution Submitted Successfully', 'OK')
-					.then(function() {
-						$scope.makecontribute={};
-						$scope.floatlabel=false;
-						$scope.floatlabel1=false;
-						$scope.myForm.setPristine();
+					if($rootScope.IOS==true){
+						var alertPopup = $ionicPopup.alert({
+							title: 'Contribution Submitted Successfully',
+							template: 'Transaction ID is '+ "" + $scope.transactionid 
+						});
+
+						alertPopup.then(function(res) {
+							$scope.makecontribute={};
+							$scope.floatlabel=false;
+							$scope.floatlabel1=false;
+							$scope.myForm.setPristine();
+						});
+					}else{
+						$cordovaDialogs.alert('Transaction ID is '+ "" + $scope.transactionid , 'Contribution Submitted Successfully', 'OK')
+						.then(function() {
+							$scope.makecontribute={};
+							$scope.floatlabel=false;
+							$scope.floatlabel1=false;
+							$scope.myForm.setPristine();
 
 					});
-					return false;
+						return false;
+
+					}	
+					
 				}else if(data.status == "FAILED"){
 					$ionicLoading.hide();
 					$cordovaDialogs.alert(data.error_message, 'Sorry', 'OK')
