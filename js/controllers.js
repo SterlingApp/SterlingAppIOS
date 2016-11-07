@@ -63,7 +63,7 @@ angular.module('starter.controllers', [])
 	}
 })
 //HSA Start//
-.controller('HsaCtrl', function($scope,$rootScope,$cordovaNetwork,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$ionicHistory,$ionicTabsDelegate) {
+.controller('HsaCtrl', function($scope,$rootScope,$cordovaNetwork,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$ionicHistory,$ionicTabsDelegate,$ionicPopup) {
  
  $scope.goForward = function () {
   
@@ -110,18 +110,28 @@ angular.module('starter.controllers', [])
       
      });
       }).error(function(err){
-     $ionicLoading.hide();
-	
- 
-     $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
-     .then(function(buttonIndex) {
-      if(buttonIndex=="1")
-      {
-       localStorage.clear();
-       window.location='login.html#/login';
-      }
-     });
-     return false;
+		$ionicLoading.hide();
+		if($rootScope.IOS==true){
+			var alertPopup = $ionicPopup.alert({
+				title: 'Sorry',
+				template: 'Session expired, Please Login Again'
+			});
+
+			alertPopup.then(function(res) {
+				localStorage.clear();
+				window.location='login.html#/login';
+			});
+		}else{
+			$cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+			.then(function(buttonIndex) {
+				if(buttonIndex=="1")
+				{
+					localStorage.clear();
+					window.location='login.html#/login';
+				}
+			});
+			return false;
+		}
    });
 })
 .controller('makecontributeCtrl', function($scope,$cordovaNetwork,$rootScope,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork) {
@@ -2387,16 +2397,6 @@ angular.module('starter.controllers', [])
 		});
 		return false;
 	});
-	
-	  var alertPopup = $ionicPopup.alert({
-         title: 'Sorry',
-         template: 'Session expired, Please Login Again'
-      });
-
-      alertPopup.then(function(res) {
-        localStorage.clear();
-		window.location='login.html#/login';
-      });
 	
 	$scope.hidefsa=false;
 	$scope.hidehsa=false;
