@@ -1602,13 +1602,25 @@ angular.module('starter.controllers', [])
 	.success(function(data){
 		$ionicLoading.hide();
 		if(data.transcation_list==null){
-			$cordovaDialogs.confirm('No RecentDisbursement', 'Sorry', 'ok')
-			.then(function(buttonIndex) {
-				if(buttonIndex=="1")
-				{
+			if($rootScope.IOS==true){
+				var alertPopup = $ionicPopup.alert({
+					title: 'Sorry',
+					template: 'No RecentDisbursement'
+				});
+
+				alertPopup.then(function(res) {
 					$location.path('/disbursement');
-				}
+				});
+			}else{
+				$cordovaDialogs.confirm('No RecentDisbursement', 'Sorry', 'ok')
+				.then(function(buttonIndex) {
+					if(buttonIndex=="1")
+					{
+						$location.path('/disbursement');
+					}
 			}); 
+		}
+			
 		}
 		else{
 			$scope.transcation_list=data.transcation_list;
@@ -1656,13 +1668,25 @@ angular.module('starter.controllers', [])
 	.success(function(data){ 
 		$ionicLoading.hide();
 		if(data.schedule_list==null){
-			$cordovaDialogs.confirm('No ScheduledDisbursement', 'Sorry', 'ok')
+			if($rootScope.IOS==true){
+				var alertPopup = $ionicPopup.alert({
+					title: 'Sorry',
+					template: 'No ScheduledDisbursement'
+				});
+
+				alertPopup.then(function(res) {
+					$location.path('/disbursement');
+				});
+			}else{
+				$cordovaDialogs.confirm('No ScheduledDisbursement', 'Sorry', 'ok')
 			.then(function(buttonIndex) {
 				if(buttonIndex=="1")
 				{
 					$location.path('/disbursement');
 				}
 			}); 
+			}
+			
 		}
 		else{
 			$scope.schedule_list=data.schedule_list;
@@ -1734,6 +1758,16 @@ angular.module('starter.controllers', [])
 		.success(function(data){
 			$ionicLoading.hide();
 			if(data.transcation_list==null){
+				if($rootScope.IOS==true){
+				var alertPopup = $ionicPopup.alert({
+					title: 'Sorry',
+					template: 'No RecentDisbursement'
+				});
+
+				alertPopup.then(function(res) {
+					$location.path('/fsacontribution');
+				});
+			}else{
 				$cordovaDialogs.confirm('No RecentDisbursement', 'Sorry', 'ok')
 				.then(function(buttonIndex) {
 					if(buttonIndex=="1")
@@ -1741,6 +1775,8 @@ angular.module('starter.controllers', [])
 						$location.path('/fsacontribution');
 					}
 				}); 
+			}
+				
 			}
 			else{
 				$scope.transcation_list=data.transcation_list;
@@ -1813,6 +1849,16 @@ angular.module('starter.controllers', [])
 		.success(function(data){
 			$ionicLoading.hide();
 			if(data.transcation_list==null){
+				if($rootScope.IOS==true){
+				var alertPopup = $ionicPopup.alert({
+					title: 'Sorry',
+					template: 'No RecentContribution'
+				});
+
+				alertPopup.then(function(res) {
+					$location.path('/fsacontribution');
+				});
+			}else{
 				$cordovaDialogs.confirm('No RecentContribution', 'Sorry', 'ok')
 				.then(function(buttonIndex) {
 					if(buttonIndex=="1")
@@ -1820,6 +1866,8 @@ angular.module('starter.controllers', [])
 						$location.path('/fsacontribution');
 					}
 				}); 
+			}
+				
 			}
 			else{
 				$scope.transcation_list=data.transcation_list;
@@ -2496,7 +2544,7 @@ angular.module('starter.controllers', [])
 						correctOrientation:true
 					};
 					$cordovaCamera.getPicture(options).then(function(imageData) {
-						$scope.imgSrc= imageData;
+							 $scope.imgSrc.push(imageData);
 					}, function(err) {
 					});
 				}
@@ -2516,7 +2564,7 @@ angular.module('starter.controllers', [])
 						correctOrientation:true
 					};
 					$cordovaCamera.getPicture(options).then(function(imageData) {
-						$scope.imgSrc= imageData;
+							 $scope.imgSrc.push(imageData);
 					}, function(err) {
 					});
 				}else if(options==2){
@@ -2696,60 +2744,6 @@ angular.module('starter.controllers', [])
 		})
 	};
 })
-
-
-//FSA End//
-// .controller('heading', function($scope,$location,$rootScope,$stateParams, $cordovaDialogs, Chats) {
-	// var i=0;
-	// $rootScope.hidecontent=false;
-	// $scope.selectColor="#496E9B";
-	// $scope.hsa="#496E9B";
-	// $scope.deselectColor="#6CA0DA";
-	// $scope.fsa="#6CA0DA";
-	// $scope.showingMenu=false;
-	// $scope.show1 = false;
-  
-	// $scope.click1 = function($event) { 
-		// $event.stopPropagation();
-		// $scope.show1 = !$scope.show1;
-	// }
-	// $scope.hideAll = function() { 
-		// $scope.show1 = false;
-		// $ionicListDelegate.closeOptionButtons();
-	// }
-	// $scope.changecolor1=function()
-	// {
-		// $scope.hsa=$scope.selectColor;
-		// $scope.fsa=$scope.deselectColor;
-		// $location.path("app/hsa");
-	// }
-	// $scope.changecolor2=function()
-	// {
-		// $scope.hsa=$scope.deselectColor;
-		// $scope.fsa=$scope.selectColor;
-		// $location.path("/fsa");
-	// }
-	// $scope.menushowhide=function()
-	// {
-		// if(i==0)
-		// {
-			// i=1;
-			// $scope.showingMenu=true;
-		// }
-		// else
-		// {
-			// i=0;
-			// $scope.showingMenu=false;
-		// }
-	// }
-	// $scope.contctUs=function()
-	// {
-		// alert("are you want to logout")
-	// }
-	// $scope.openMenu=function(){
-		// $ionicSideMenuDelegate.toggleLeft();
-	// }
-// })
 
 
 .controller('fsahealthcareCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope,$cordovaCamera) {
