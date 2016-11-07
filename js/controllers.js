@@ -415,12 +415,8 @@ angular.module('starter.controllers', [])
 		var mindate = ionic.Platform.isIOS() ? new Date(_minDate.getFullYear(), _minDate.getMonth(), _minDate.getDay()) :
 		(new Date(_minDate.getFullYear(), _minDate.getMonth(), _minDate.getDay())).valueOf();
 		var maxDate = ionic.Platform.isIOS() ? new Date() : (new Date()).valueOf();
-		var options = {
-			allowOldDates: true,
-			allowFutureDates: false,
-		};
 
-		$cordovaDatePicker.show({date: today,minDate: mindate,maxDate: maxDate,options}).then
+		$cordovaDatePicker.show({date: today,minDate: mindate,maxDate: maxDate}).then
 		(function(date)
 		{
 			var date1=date.toString();
