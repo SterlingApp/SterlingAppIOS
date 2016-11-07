@@ -62,43 +62,6 @@ angular.module('starter.controllers', [])
 		}
 	}
 })
-.controller('PortfolioCtrl', function($rootScope,$scope,$cordovaNetwork,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork) {
-	localStorage.setItem("backCount","1");
-	$scope.username = localStorage.getItem('username');
-	$scope.access_token = localStorage.getItem('access_token');
-	if($cordovaNetwork.isOffline())
-	{
-		$ionicLoading.hide();
-		$cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
-		.then(function() {
-		});
-		return false;
-	}
-	else
-	{
-		$http.get('http://app.sterlinghsa.com/api/v1/accounts/portfolio',{headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
-		.success(function(data){
-		localStorage.setItem('account_types',data.account_types.HSA);
-		localStorage.setItem('account_types',data.account_types.FSA);
-		$scope.account_type=data.account_types.HSA;
-		$scope.account_types=data.account_types.FSA;
-		$rootScope.hsaaccno=data.account_types.HSA.ACCT_NUM;
-		$rootScope.fsaaccno=data.account_types.FSA.ACCT_NUM;
-		$rootScope.hsaaccId=data.account_types.HSA.ACCT_ID;
-		$rootScope.fsaaccId=data.account_types.FSA.ACCT_ID;
-		$rootScope.cobrassn=data.account_types.COBRA.SSN;
-		$rootScope.hsaacctype=data.account_types.HSA.ACCOUNT_TYPE;
-		}).error(function(err){
-		});
-	}
-
-	$scope.goback=function()
-	{
-		$rootScope.hidecontent=false;
-		window.history.back();
-	}
-	
-})
 //HSA Start//
 .controller('HsaCtrl', function($scope,$rootScope,$cordovaNetwork,$ionicPlatform,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$ionicHistory,$ionicTabsDelegate) {
  
@@ -148,6 +111,8 @@ angular.module('starter.controllers', [])
      });
       }).error(function(err){
      $ionicLoading.hide();
+	
+ 
      $cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
      .then(function(buttonIndex) {
       if(buttonIndex=="1")
@@ -2423,15 +2388,15 @@ angular.module('starter.controllers', [])
 		return false;
 	});
 	
-	   var alertPopup = $ionicPopup.alert({
-         title: 'Title',
-         template: 'Alert message'
+	  var alertPopup = $ionicPopup.alert({
+         title: 'Sorry',
+         template: 'Session expired, Please Login Again'
       });
 
       alertPopup.then(function(res) {
          // Custom functionality....
       });
- 
+	
 	$scope.hidefsa=false;
 	$scope.hidehsa=false;
 	$scope.hidecobra=false;
