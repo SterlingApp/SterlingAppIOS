@@ -897,23 +897,6 @@ angular.module('starter.controllers', [])
 			confirmPopup.then(function(res) {
 				if(res) {
 					var options = {
-					quality: 50,
-					destinationType: Camera.DestinationType.FILE_URI,
-					sourceType: Camera.PictureSourceType.CAMERA,
-					targetWidth: 100,
-					targetHeight: 100,
-					popoverOptions: CameraPopoverOptions,
-					saveToPhotoAlbum: false,
-					correctOrientation:true
-				};
-				$cordovaCamera.getPicture(options).then(function(imageData) {
-					$scope.imgSrc= imageData;
-				}, function(err) {
-				});
-					
-					
-				} else {
-					var options = {
 					maximumImagesCount: 5,
 					quality: 50,
 					destinationType: Camera.DestinationType.FILE_URI,
@@ -930,6 +913,23 @@ angular.module('starter.controllers', [])
 				
 				}, function(err) {
 				});
+					
+					
+				} else {
+					var options = {
+						quality: 50,
+						destinationType: Camera.DestinationType.FILE_URI,
+						sourceType: Camera.PictureSourceType.CAMERA,
+						targetWidth: 100,
+						targetHeight: 100,
+						popoverOptions: CameraPopoverOptions,
+						saveToPhotoAlbum: false,
+						correctOrientation:true
+					};
+					$cordovaCamera.getPicture(options).then(function(imageData) {
+						$scope.imgSrc= imageData;
+					}, function(err) {
+					});
 				}
 			});
 		}else{
@@ -2425,7 +2425,7 @@ angular.module('starter.controllers', [])
 		$location.path("app/fsa");
 	}
 })
-.controller('fsadependentCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$ionicScrollDelegate,$rootScope,$cordovaCamera) {
+.controller('fsadependentCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$ionicScrollDelegate,$rootScope,$cordovaCamera,$ionicPopup) {
 	$rootScope.hidecontent=true;
 	localStorage.setItem("backCount","3");
 	$scope.access_token = localStorage.getItem('access_token');
