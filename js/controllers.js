@@ -3618,10 +3618,21 @@ angular.module('starter.controllers', [])
 	.success(function(data){
 		if(data.status=="FAILED"){
 			$scope.msg=data.error_message;
-			$cordovaDialogs.alert($scope.msg, 'Sorry', 'ok')
-			.then(function() {
-			});
-			return false;
+			if($rootScope.IOS==true){
+				var alertPopup = $ionicPopup.alert({
+					title: 'Sorry',
+					template: $scope.msg
+				});
+
+				alertPopup.then(function(res){
+				});
+			}else{
+				$cordovaDialogs.alert($scope.msg, 'Sorry', 'ok')
+				.then(function() {
+				});
+				return false;
+			}
+			
 		}
 		$scope.bank_details=data.bank_details;
 	}).error(function(err){
