@@ -2658,7 +2658,6 @@ angular.module('starter.controllers', [])
 
 			});
 		})
-
 	};
 	$scope.EndgetTransDate=function(){
 		var options = {
