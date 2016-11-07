@@ -607,21 +607,6 @@ angular.module('starter.controllers', [])
 			confirmPopup.then(function(res) {
 				if(res) {
 					var options = {
-					quality: 50,
-					destinationType: Camera.DestinationType.FILE_URI,
-					sourceType: Camera.PictureSourceType.CAMERA,
-					targetWidth: 100,
-					targetHeight: 100,
-					popoverOptions: CameraPopoverOptions,
-					saveToPhotoAlbum: false,
-					correctOrientation:true
-				};
-				$cordovaCamera.getPicture(options).then(function(imageData) {
-					$scope.imgSrc= imageData;
-				}, function(err) {
-				});
-				} else {
-					var options = {
 					maximumImagesCount: 5,
 					quality: 50,
 					destinationType: Camera.DestinationType.FILE_URI,
@@ -636,6 +621,22 @@ angular.module('starter.controllers', [])
 				$cordovaCamera.getPicture(options).then(function(imageData) {
 					$scope.imgSrc= imageData;
 				
+				}, function(err) {
+				});
+					
+				} else {
+					var options = {
+					quality: 50,
+					destinationType: Camera.DestinationType.FILE_URI,
+					sourceType: Camera.PictureSourceType.CAMERA,
+					targetWidth: 100,
+					targetHeight: 100,
+					popoverOptions: CameraPopoverOptions,
+					saveToPhotoAlbum: false,
+					correctOrientation:true
+				};
+				$cordovaCamera.getPicture(options).then(function(imageData) {
+					$scope.imgSrc= imageData;
 				}, function(err) {
 				});
 				}
