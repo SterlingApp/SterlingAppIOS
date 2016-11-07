@@ -82,11 +82,21 @@ angular.module('starter.controllers', [])
 					localStorage.setItem('username',$scope.loginData.username);
 					window.location.href = 'index.html#/app/hsa';				
 				}else if(data.status=="FAILED"){
-					$ionicLoading.hide()
-					$cordovaDialogs.alert('Username or password is incorrect ', 'Sorry', 'OK')
-					.then(function() {
-					});
-					return false;
+					$ionicLoading.hide();
+					if($rootScope.IOS==true){
+						var alertPopup = $ionicPopup.alert({
+							title: 'Sorry',
+							template: 'Username or password is incorrect'
+						});
+
+						alertPopup.then(function(res) {
+						});
+					}else{
+						$cordovaDialogs.alert('Username or password is incorrect ', 'Sorry', 'OK')
+							.then(function() {
+						});
+						return false;
+					}	
 				}
 			}).error(function(err){		
 			});
