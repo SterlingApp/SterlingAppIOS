@@ -369,21 +369,34 @@ angular.module('starter.controllers', [])
 							$scope.floatlabel1=false;
 							$scope.myForm.setPristine();
 
-					});
+						});
 						return false;
 
 					}	
 					
 				}else if(data.status == "FAILED"){
 					$ionicLoading.hide();
-					$cordovaDialogs.alert(data.error_message, 'Sorry', 'OK')
-					.then(function() {
-						$scope.makecontribute={};
-						$scope.floatlabel=false;
-						$scope.floatlabel1=false;
+					if($rootScope.IOS==true){
+						var alertPopup = $ionicPopup.alert({
+							title: 'Sorry',
+							template: data.error_message 
+						});
 
+						alertPopup.then(function(res) {
+							$scope.makecontribute={};
+							$scope.floatlabel=false;
+							$scope.floatlabel1=false;
+							$scope.myForm.setPristine();
+						});
+					}else{
+						$cordovaDialogs.alert(data.error_message, 'Sorry', 'OK')
+						.then(function() {
+							$scope.makecontribute={};
+							$scope.floatlabel=false;
+							$scope.floatlabel1=false;
 					});
 					return false;
+					}						
 				}
 			}).error(function(err){
 			});
@@ -584,7 +597,51 @@ angular.module('starter.controllers', [])
 	
 	
 	$scope.upload = function(){
-		$cordovaDialogs.confirm('Choose your option', 'Upload Receipt', ['Camera','Gallery'])
+		if($rootScope.IOS==true){
+			var confirmPopup = $ionicPopup.confirm({
+				title: 'Upload Receipt',
+				template: 'Choose your option',
+				okText: 'Gallery',
+				cancelText: 'Camera',
+			});
+			confirmPopup.then(function(res) {
+				if(res) {
+					var options = {
+					quality: 50,
+					destinationType: Camera.DestinationType.FILE_URI,
+					sourceType: Camera.PictureSourceType.CAMERA,
+					targetWidth: 100,
+					targetHeight: 100,
+					popoverOptions: CameraPopoverOptions,
+					saveToPhotoAlbum: false,
+					correctOrientation:true
+				};
+				$cordovaCamera.getPicture(options).then(function(imageData) {
+					$scope.imgSrc= imageData;
+				}, function(err) {
+				});
+				} else {
+					var options = {
+					maximumImagesCount: 5,
+					quality: 50,
+					destinationType: Camera.DestinationType.FILE_URI,
+					sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+					targetWidth: 100,
+					targetHeight: 100,
+					popoverOptions: CameraPopoverOptions,
+					saveToPhotoAlbum: false,
+					correctOrientation:true
+				};
+				
+				$cordovaCamera.getPicture(options).then(function(imageData) {
+					$scope.imgSrc= imageData;
+				
+				}, function(err) {
+				});
+				}
+			});
+		}else{
+			$cordovaDialogs.confirm('Choose your option', 'Upload Receipt', ['Camera','Gallery'])
 		.then(function(options) {
 			if(options==1){
 				var options = {
@@ -621,7 +678,7 @@ angular.module('starter.controllers', [])
 				});
 			}
 		});
-		return false;
+		}
 	}
 	
 	$scope.TransDate="";
