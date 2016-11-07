@@ -3194,7 +3194,7 @@ angular.module('starter.controllers', [])
 	}
 	
 })
-.controller('HrabalCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope) {
+.controller('HrabalCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope,$ionicPopup) {
 	$scope.username = localStorage.getItem('username');
 	$scope.access_token = localStorage.getItem('access_token');
 	$scope.hraacc= $rootScope.hraaccno;
@@ -3202,17 +3202,18 @@ angular.module('starter.controllers', [])
 	if($cordovaNetwork.isOffline())
 	{
 		$ionicLoading.hide();
-		$cordovaDialogs.alert('Please Connect with internet', 'Sorry', 'ok')
-		.then(function() {
-		});
-		return false;
-	}else{
-		$http.get("http://app.sterlinghsa.com/api/v1/accounts/availablebalances",{params:{ 'acct_num':$scope.hraacc},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
-		.success(function(data){
-			$rootScope.available_balances = data.available_balances;
-		}).error(function(err){
-			$ionicLoading.hide();
-			$cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+		if($rootScope.IOS==true){
+			var alertPopup = $ionicPopup.alert({
+				title: 'Sorry',
+				template: 'Please Connect with internet'
+			});
+
+			alertPopup.then(function(res) {
+				localStorage.clear();
+				window.location='login.html#/login';
+			});
+		}else{
+			$cordovaDialogs.confirm('Please Connect with internet', 'Sorry', 'ok')
 			.then(function(buttonIndex) {
 				if(buttonIndex=="1")
 				{
@@ -3221,7 +3222,34 @@ angular.module('starter.controllers', [])
 				}
 			});
 			return false;
+		}
+	}else{
+		$http.get("http://app.sterlinghsa.com/api/v1/accounts/availablebalances",{params:{ 'acct_num':$scope.hraacc},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
+		.success(function(data){
+			$rootScope.available_balances = data.available_balances;
+		}).error(function(err){
+			$ionicLoading.hide();
+			if($rootScope.IOS==true){
+				var alertPopup = $ionicPopup.alert({
+					title: 'Sorry',
+					template: 'Session expired, Please Login Again'
+				});
 
+				alertPopup.then(function(res){
+					localStorage.clear();
+					window.location='login.html#/login';
+				});
+			}else{
+				$cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+				.then(function(buttonIndex) {
+					if(buttonIndex=="1")
+					{
+						localStorage.clear();
+						window.location='login.html#/login';
+					}
+				});
+				return false;
+			}
 		});
 	}
 	$scope.goback=function()
@@ -3229,7 +3257,7 @@ angular.module('starter.controllers', [])
 		$location.path("app/hra")
 	}
 })
-.controller('PaymeacoindeCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope,$cordovaCamera) {
+.controller('PaymeacoindeCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope,$cordovaCamera,$ionicPopup) {
 	$scope.username = localStorage.getItem('username');
 	$scope.access_token = localStorage.getItem('access_token');
 	$scope.newclaim_balance=$rootScope.newclaim_balance;
@@ -3298,18 +3326,28 @@ angular.module('starter.controllers', [])
 		$scope.bank_details=data.bank_details;
 	}).error(function(err){
 		$ionicLoading.hide();
-		$cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
-		.then(function(buttonIndex) {
-			if(buttonIndex=="1")
-			{
-				localStorage.clear();
-				window.location='login.html#/login';
-			}
-		});
-		return false;
+		if($rootScope.IOS==true){
+				var alertPopup = $ionicPopup.alert({
+					title: 'Sorry',
+					template: 'Session expired, Please Login Again'
+				});
 
+				alertPopup.then(function(res){
+					localStorage.clear();
+					window.location='login.html#/login';
+				});
+		}else{
+				$cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+				.then(function(buttonIndex) {
+					if(buttonIndex=="1")
+					{
+						localStorage.clear();
+						window.location='login.html#/login';
+					}
+				});
+				return false;
+		}
 	});
- 
  
 	$scope.startTransDate="";
 	$scope.endTransDate="";
@@ -3371,10 +3409,19 @@ angular.module('starter.controllers', [])
  
 	$scope.submitValues=function(){
 		if($scope.acoinde.amount == 0){
-			$cordovaDialogs.alert('Please enter the amount greater than 0','Sorry','OK')
-			.then(function() {
-			});
+			if($rootScope.IOS==true){
+				var alertPopup = $ionicPopup.alert({
+					title: 'Sorry',
+					template: 'Please enter the amount greater than 0'
+				});
 
+				alertPopup.then(function(res){
+				});
+			}else{
+				$cordovaDialogs.alert('Please enter the amount greater than 0','Sorry','OK')
+				.then(function() {
+				});
+			}
 		}else{
 			$http.post("http://app.sterlinghsa.com/api/v1/accounts/newclaimrequest",{'acct_num':  $scope.fsaaccno,
 			'acct_id':$scope.fsaaccId,
@@ -3428,7 +3475,7 @@ angular.module('starter.controllers', [])
 	}
 	
 })
-.controller('PayprovideracoindeCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope,$cordovaCamera) {
+.controller('PayprovideracoindeCtrl', function($scope,$ionicPlatform,$cordovaNetwork,$cordovaDatePicker,$http,$location,$ionicModal,$cordovaDialogs,$ionicLoading,$cordovaNetwork,$rootScope,$cordovaCamera,$ionicPopup) {
 	$scope.username = localStorage.getItem('username');
 	$scope.access_token = localStorage.getItem('access_token');
 	$scope.newclaim_balance=$rootScope.newclaim_balance;
@@ -3486,10 +3533,19 @@ angular.module('starter.controllers', [])
 
 	$scope.submitValues=function(){
 		if($scope.provideracoinde.amount == 0){
-			$cordovaDialogs.alert('Please enter the amount greater than 0','Sorry','OK')
-			.then(function() {
-			});
+			if($rootScope.IOS==true){
+				var alertPopup = $ionicPopup.alert({
+					title: 'Sorry',
+					template: 'Please enter the amount greater than 0'
+				});
 
+				alertPopup.then(function(res){
+				});
+			}else{
+				$cordovaDialogs.alert('Please enter the amount greater than 0','Sorry','OK')
+				.then(function() {
+				});
+			}
 		}else{
 			$http.post("http://app.sterlinghsa.com/api/v1/accounts/newclaimrequest",{'acct_num': $scope.hraacc,
 			'acct_id':$scope.fsaaccId,
@@ -3542,19 +3598,28 @@ angular.module('starter.controllers', [])
 	.success(function(data){
 		$scope.payee=data.payee ;
 	}).error(function(err){
-		$cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
-		.then(function(buttonIndex) {
-			if(buttonIndex=="1")
-			{
-				localStorage.clear();
-				window.location='login.html#/login';
-			}
-		});
-		return false;
+		if($rootScope.IOS==true){
+				var alertPopup = $ionicPopup.alert({
+					title: 'Sorry',
+					template: 'Session expired, Please Login Again'
+				});
 
+				alertPopup.then(function(res){
+					localStorage.clear();
+					window.location='login.html#/login';
+				});
+		}else{
+				$cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+				.then(function(buttonIndex) {
+					if(buttonIndex=="1")
+					{
+						localStorage.clear();
+						window.location='login.html#/login';
+					}
+				});
+				return false;
+		}
 	});
-  
- 
  
 	$scope.startTransDate="";
 	$scope.endTransDate="";
@@ -3644,7 +3709,7 @@ angular.module('starter.controllers', [])
 	}
 	
 })
-.controller('CobraaccountCtrl', function($scope,$location,$rootScope, $stateParams, $http,$ionicLoading,$cordovaDialogs) {
+.controller('CobraaccountCtrl', function($scope,$location,$rootScope, $stateParams, $http,$ionicLoading,$cordovaDialogs,$ionicPopup) {
 	$scope.access_token = localStorage.getItem('access_token');
 	$scope.ssn=$rootScope.cobrassn;
 	$http.get(' http://app.sterlinghsa.com/api/v1/accounts/accountinfo',{params:{'type':'cobra','ssn': $scope.ssn},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} })
@@ -3654,15 +3719,27 @@ angular.module('starter.controllers', [])
 
 	}).error(function(err){
 		$ionicLoading.hide();
-		$cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
-		.then(function(buttonIndex) {
-		if(buttonIndex=="1")
-			{
-				localStorage.clear();
-				window.location='login.html#/login';
-			}
-		});
-		return false;
+		if($rootScope.IOS==true){
+				var alertPopup = $ionicPopup.alert({
+					title: 'Sorry',
+					template: 'Session expired, Please Login Again'
+				});
+
+				alertPopup.then(function(res){
+					localStorage.clear();
+					window.location='login.html#/login';
+				});
+		}else{
+				$cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+				.then(function(buttonIndex) {
+					if(buttonIndex=="1")
+					{
+						localStorage.clear();
+						window.location='login.html#/login';
+					}
+				});
+				return false;
+		}
 	});
 	
 	$scope.goback=function()
@@ -3671,7 +3748,7 @@ angular.module('starter.controllers', [])
 	}
 	
 })
-.controller('CobraPaymentCtrl', function($scope,$location,$rootScope, $stateParams, $http,$ionicLoading,$cordovaDialogs,$location) {
+.controller('CobraPaymentCtrl', function($scope,$location,$rootScope, $stateParams, $http,$ionicLoading,$cordovaDialogs,$location,$ionicPopup) {
 	$scope.access_token = localStorage.getItem('access_token');
 	$scope.ssn=$rootScope.cobrassn;
 	$http.get(" http://app.sterlinghsa.com/api/v1/accounts/recent-cobra-payments",{params:{'ssn': $scope.ssn},headers: {'Content-Type':'application/json; charset=utf-8','Authorization':$scope.access_token} } )
@@ -3690,15 +3767,27 @@ angular.module('starter.controllers', [])
 		}
 	}).error(function(err){
 		$ionicLoading.hide();
-		$cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
-		.then(function(buttonIndex) {
-			if(buttonIndex=="1")
-			{
-				localStorage.clear();
-				window.location='login.html#/login';
-			}
-		});
-		return false;
+		if($rootScope.IOS==true){
+				var alertPopup = $ionicPopup.alert({
+					title: 'Sorry',
+					template: 'Session expired, Please Login Again'
+				});
+
+				alertPopup.then(function(res){
+					localStorage.clear();
+					window.location='login.html#/login';
+				});
+		}else{
+				$cordovaDialogs.confirm('Session expired, Please Login Again', 'Sorry', 'ok')
+				.then(function(buttonIndex) {
+					if(buttonIndex=="1")
+					{
+						localStorage.clear();
+						window.location='login.html#/login';
+					}
+				});
+				return false;
+		}
 	});
 	
 	$scope.goback=function()
