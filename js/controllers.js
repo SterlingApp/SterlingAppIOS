@@ -2422,6 +2422,15 @@ angular.module('starter.controllers', [])
 		});
 		return false;
 	});
+	
+	   var alertPopup = $ionicPopup.alert({
+         title: 'Title',
+         template: 'Alert message'
+      });
+
+      alertPopup.then(function(res) {
+         // Custom functionality....
+      });
  
 	$scope.hidefsa=false;
 	$scope.hidehsa=false;
@@ -2499,7 +2508,7 @@ angular.module('starter.controllers', [])
 				title: 'Do you want to Logout',
 				template: 'Are you sure',
 				okText: 'No',
-				// cancelText: 'Yes',
+				cancelText: 'Yes',
 			});
 			confirmPopup.then(function(res) {
 				if(res) {
