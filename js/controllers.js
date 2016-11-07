@@ -1295,14 +1295,24 @@ angular.module('starter.controllers', [])
 		$scope.schedule_list=data.schedule_list;
 
 	}else{
-		$cordovaDialogs.confirm('No Scheduledcontribution', 'Sorry', 'ok')
-		.then(function(buttonIndex) {
-			if(buttonIndex=="1")
-			{
-				$location.path("/activityContribution");
-			}
+		if($rootScope.IOS==true){
+				var alertPopup = $ionicPopup.alert({
+					title: 'Sorry',
+					template: 'No Scheduledcontribution'
+				});
 
-		});
+				alertPopup.then(function(res) {
+					$location.path("/activityContribution");
+				});
+		}else{
+				$cordovaDialogs.confirm('No Scheduledcontribution', 'Sorry', 'ok')
+			.then(function(buttonIndex) {
+				if(buttonIndex=="1")
+				{
+					$location.path("/activityContribution");
+				}
+			});
+		}
 	}
 	}).error(function(err){
 		$ionicLoading.hide();
